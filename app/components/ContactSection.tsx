@@ -8,10 +8,9 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 
 const socials = [
-  { label: 'Instagram', href: '#' },
-  { label: 'Behance', href: '#' },
+  { label: 'GitHub', href: 'https://github.com/pimukchall' },
+  { label: 'Instagram', href: 'https://instagram.com/pimuk.muk' },
   { label: 'LinkedIn', href: '#' },
-  { label: 'Dribbble', href: '#' },
 ];
 
 export default function ContactSection() {
@@ -148,7 +147,7 @@ export default function ContactSection() {
                   Location
                 </Typography>
                 <Typography variant="body1" sx={{ color: 'rgba(250,250,248,0.8)' }}>
-                  Bangkok, Thailand
+                  Nonthaburi, Thailand
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'rgba(250,250,248,0.4)', mt: 0.5 }}>
                   Available for remote & travel projects worldwide

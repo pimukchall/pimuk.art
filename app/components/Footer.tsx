@@ -42,7 +42,7 @@ export default function Footer() {
           </Typography>
 
           <Typography variant="caption" sx={{ color: 'rgba(250,250,248,0.2)' }}>
-            Bangkok, Thailand
+            Nonthaburi, Thailand
           </Typography>
         </Box>
       </Container>

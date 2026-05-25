@@ -3,37 +3,36 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 
 const services = [
   {
     number: '01',
-    title: 'Brand Identity',
+    title: 'Enterprise ERP Development',
     description:
-      'Complete visual identity systems — from logo and typography to colour palettes, brand guidelines, and all printed collateral. Built to last.',
-    deliverables: ['Logo & Mark Design', 'Brand Guidelines', 'Print & Packaging', 'Brand Voice'],
+      'พัฒนาระบบ ERP ขององค์กรตั้งแต่ศูนย์ด้วย Module-Based Clean Architecture ครอบคลุม Inventory Management, HR Tools, Employee Evaluation, Service Desk และระบบ Workflow อื่นๆ ตามความต้องการของธุรกิจ',
+    deliverables: ['System Architecture Design', 'Module-Based Development', 'Database Schema', 'API Design (REST)'],
   },
   {
     number: '02',
-    title: 'Art Direction',
+    title: 'ISO Digital Transformation',
     description:
-      'Concept-led art direction for campaigns, editorials, and lookbooks. I collaborate with photographers, stylists, and teams to realise a cohesive visual vision.',
-    deliverables: ['Campaign Concepts', 'Photography Direction', 'Editorial Design', 'Mood & Vision'],
+      'เปลี่ยนผ่านกระบวนการ Paper-based สู่ Digital 100% ตามมาตรฐาน ISO ออกแบบระบบ Traceability, Audit Log และ Log Management เพื่อสร้างความโปร่งใส ป้องกันการทุจริต และเร่งความเร็ว Audit',
+    deliverables: ['Traceability System', 'Audit Log Design', 'QP / Workflow Design', 'Microsoft Visio Flow'],
   },
   {
     number: '03',
-    title: 'Digital Design',
+    title: 'System Architecture & Modernisation',
     description:
-      'Intentional UX/UI for websites and digital products — where every interaction is considered, every detail deliberate, and nothing is without reason.',
-    deliverables: ['UI / UX Design', 'Web Design', 'Design Systems', 'Prototyping'],
+      'Refactor ระบบจาก Monolith ไปสู่ Module-Based Architecture แบ่งเลเยอร์ชัดเจน (Repositories, Services, Controllers, Routes) รองรับ Scalability ลด Technical Debt และ Migrate สู่ Modern Stack',
+    deliverables: ['Architecture Review', 'Monolith → Module Refactor', 'Clean Code Consulting', 'Next.js / Nuxt Migration'],
   },
   {
     number: '04',
-    title: 'Creative Consulting',
+    title: 'IT Infrastructure & IAM',
     description:
-      'Strategic guidance for brands seeking clarity. I help teams define their visual language, align stakeholders, and build the creative frameworks to move forward with confidence.',
-    deliverables: ['Brand Audit', 'Visual Strategy', 'Team Workshops', 'Creative Review'],
+      'วางระบบ Enterprise Identity & Access Management เชื่อมต่อ SSO กับ Microsoft Entra ID / Active Directory บริหาร Infrastructure ทั้ง On-premise และ Hybrid Cloud พร้อม Network Security (FortiGate, UniFi)',
+    deliverables: ['Microsoft Entra ID / SSO', 'RBAC Design', 'FortiGate / Network Policy', 'Vercel · Railway · PM2'],
   },
 ];
 
@@ -83,8 +82,8 @@ export default function ServicesSection() {
               What I Do
             </Typography>
           </Box>
-          <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 280 }}>
-            End-to-end creative services, from first concept to final delivery.
+          <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 300 }}>
+            End-to-end enterprise development — from architecture design to production deployment.
           </Typography>
         </Box>
 
@@ -98,11 +97,7 @@ export default function ServicesSection() {
                 flexDirection: { xs: 'column', md: 'row' },
                 gap: { xs: 3, md: 6 },
                 alignItems: { md: 'flex-start' },
-                cursor: 'default',
-                transition: 'all 0.3s ease',
-                '&:hover .service-number': {
-                  color: 'secondary.main',
-                },
+                '&:hover .service-number': { color: 'secondary.main' },
               }}
             >
               {/* Number */}
@@ -125,17 +120,13 @@ export default function ServicesSection() {
               <Box sx={{ flex: 1 }}>
                 <Typography
                   variant="h3"
-                  sx={{
-                    mb: 2,
-                    fontSize: { xs: '1.5rem', md: '2rem' },
-                  }}
+                  sx={{ mb: 2, fontSize: { xs: '1.4rem', md: '1.875rem' } }}
                 >
                   {service.title}
                 </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 560 }}>
+                <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 580 }}>
                   {service.description}
                 </Typography>
-
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
                   {service.deliverables.map((item) => (
                     <Typography
@@ -162,13 +153,12 @@ export default function ServicesSection() {
                 </Box>
               </Box>
 
-              {/* Decorative arrow */}
+              {/* Arrow */}
               <Box
                 sx={{
                   alignSelf: { md: 'center' },
                   display: { xs: 'none', md: 'flex' },
                   alignItems: 'center',
-                  gap: 1,
                   color: 'divider',
                   minWidth: 60,
                 }}

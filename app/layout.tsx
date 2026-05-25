@@ -9,8 +9,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: 'Pimuk — Creative Portfolio',
-  description: 'Art director, designer & creative explorer based in Bangkok.',
+  title: 'Pimuk — Full-Stack Developer & Enterprise Architect',
+  description:
+    'Full-Stack Developer specialising in Enterprise ERP & ISO Digital Transformation. Zero to Production. Clean Architecture. Nonthaburi, Thailand.',
 };
 
 export default function RootLayout({

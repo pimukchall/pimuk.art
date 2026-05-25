@@ -75,7 +75,7 @@ export default function HeroSection() {
                   },
                 }}
               >
-                Creative Portfolio
+                Full-Stack Developer &amp; Enterprise Architect
               </Typography>
 
               {/* Main heading */}
@@ -83,21 +83,18 @@ export default function HeroSection() {
                 variant="h1"
                 sx={{
                   mb: { xs: 3, md: 4 },
-                  fontSize: { xs: '3rem', sm: '4rem', md: '5.5rem', lg: '7rem' },
+                  fontSize: { xs: '2.75rem', sm: '3.75rem', md: '5rem', lg: '6.5rem' },
                 }}
               >
-                Art &amp;{' '}
+                Zero to{' '}
                 <Box
                   component="span"
-                  sx={{
-                    fontStyle: 'italic',
-                    color: 'secondary.main',
-                  }}
+                  sx={{ fontStyle: 'italic', color: 'secondary.main' }}
                 >
-                  Design
+                  Production
                 </Box>
                 <br />
-                with Purpose
+                Enterprise Systems
               </Typography>
 
               {/* Subtext */}
@@ -105,14 +102,14 @@ export default function HeroSection() {
                 variant="body1"
                 sx={{
                   color: 'text.secondary',
-                  maxWidth: 480,
+                  maxWidth: 520,
                   mb: { xs: 5, md: 7 },
                   fontSize: { xs: '0.9375rem', md: '1.0625rem' },
                 }}
               >
-                I create visual experiences that bridge aesthetics and meaning —
-                from brand identities to digital interfaces. Based in Bangkok,
-                working worldwide.
+                ออกแบบและพัฒนาระบบ ERP &amp; ISO Digital Transformation ตั้งแต่ศูนย์
+                ด้วย Clean Architecture, Modularity และ AI-Driven Development
+                เพื่อตอบโจทย์ธุรกิจระดับ Enterprise อย่างแม่นยำ
               </Typography>
 
               {/* CTAs */}
@@ -126,7 +123,7 @@ export default function HeroSection() {
                   }}
                   sx={{ alignSelf: { xs: 'flex-start' } }}
                 >
-                  View My Work
+                  Selected Projects
                 </Button>
                 <Button
                   variant="outlined"
@@ -153,9 +150,9 @@ export default function HeroSection() {
               }}
             >
               {[
-                { number: '7+', label: 'Years Experience' },
-                { number: '80+', label: 'Projects Delivered' },
-                { number: '30+', label: 'Happy Clients' },
+                { number: 'ERP', label: 'Zero to Production' },
+                { number: 'ISO', label: 'Digital Transformation' },
+                { number: 'SSO', label: 'Enterprise IAM / Entra ID' },
               ].map((stat) => (
                 <Box
                   key={stat.label}
@@ -169,7 +166,7 @@ export default function HeroSection() {
                   <Typography
                     sx={{
                       fontFamily: '"Cormorant Garamond", Georgia, serif',
-                      fontSize: { xs: '2.5rem', md: '3.5rem' },
+                      fontSize: { xs: '2rem', md: '2.75rem' },
                       fontWeight: 300,
                       color: 'text.primary',
                       lineHeight: 1,

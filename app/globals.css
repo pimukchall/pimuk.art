@@ -1,9 +1,16 @@
+/* ── Latin serif for headings ── */
 @import '@fontsource/cormorant-garamond/300.css';
 @import '@fontsource/cormorant-garamond/400.css';
 @import '@fontsource/cormorant-garamond/500.css';
-@import '@fontsource/cormorant-garamond/600.css';
 @import '@fontsource/cormorant-garamond/300-italic.css';
 @import '@fontsource/cormorant-garamond/400-italic.css';
+
+/* ── Thai sans-serif (หัวตัด) — Noto Sans Thai ── */
+@import '@fontsource/noto-sans-thai/300.css';
+@import '@fontsource/noto-sans-thai/400.css';
+@import '@fontsource/noto-sans-thai/500.css';
+@import '@fontsource/noto-sans-thai/600.css';
+@import '@fontsource/noto-sans-thai/700.css';
 
 @layer base {
   *,
@@ -14,6 +21,21 @@
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* ── Thai text uses Noto Sans Thai (หัวตัด), fallback to Geist Sans ── */
+  :lang(th),
+  :lang(th) * {
+    font-family: 'Noto Sans Thai', var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  /*
+   * For mixed Thai+Latin paragraphs without lang attr,
+   * list Noto Sans Thai first so Thai glyphs are served from it,
+   * while Latin glyphs fall through to Geist Sans.
+   */
+  body {
+    font-family: 'Noto Sans Thai', var(--font-geist-sans), system-ui, sans-serif;
   }
 
   ::selection {

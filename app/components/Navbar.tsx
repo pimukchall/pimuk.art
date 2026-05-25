@@ -16,6 +16,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const navLinks = [
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
+  { label: 'Education', href: '#education' },
   { label: 'Services', href: '#services' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -70,10 +71,10 @@ export default function Navbar() {
               flexGrow: 1,
               textDecoration: 'none',
               color: 'text.primary',
-              fontFamily: '"Cormorant Garamond", Georgia, serif',
-              fontSize: '1.1rem',
-              fontWeight: 500,
-              letterSpacing: '0.15em',
+              fontFamily: '"Noto Sans Thai", var(--font-geist-sans), system-ui, sans-serif',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
             }}
           >
