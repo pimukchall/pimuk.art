@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 
@@ -148,36 +147,6 @@ export default function EducationSection() {
               </Box>
             ))}
 
-            {/* Transcript download */}
-            <Box sx={{ mt: 5 }}>
-              <Button
-                variant="outlined"
-                component="a"
-                href="/transcript.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                fullWidth
-                sx={{
-                  py: 1.5,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1.5,
-                  '&::after': {
-                    content: '"↗"',
-                    fontSize: '0.8rem',
-                  },
-                }}
-              >
-                Official Transcript of Record
-              </Button>
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{ display: 'block', textAlign: 'center', mt: 1 }}
-              >
-                Issued by Rangsit University · PDF
-              </Typography>
-            </Box>
           </Grid>
 
           {/* Right: Relevant courses */}
