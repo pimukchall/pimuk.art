@@ -141,32 +141,35 @@ export default function HeroSection() {
           </Grid>
 
           <Grid size={{ xs: 12, md: 4 }}>
-            {/* Stats */}
+            {/* Stats — row on md+, 3-col grid on xs */}
             <Box
               sx={{
-                display: { xs: 'flex', md: 'block' },
-                gap: 4,
-                mt: { xs: 6, md: 0 },
+                display: 'grid',
+                gridTemplateColumns: { xs: 'repeat(3, 1fr)', md: '1fr' },
+                gap: { xs: 2, md: 0 },
+                mt: { xs: 5, md: 0 },
               }}
             >
               {[
                 { number: 'ERP', label: 'Zero to Production' },
                 { number: 'ISO', label: 'Digital Transformation' },
-                { number: 'SSO', label: 'Enterprise IAM / Entra ID' },
+                { number: 'SSO', label: 'Enterprise IAM' },
               ].map((stat) => (
                 <Box
                   key={stat.label}
                   sx={{
                     mb: { xs: 0, md: 5 },
                     pl: { md: 4 },
+                    pt: { xs: 2, md: 0 },
                     borderLeft: { md: '1px solid' },
-                    borderColor: { md: 'divider' },
+                    borderTop: { xs: '1px solid', md: 'none' },
+                    borderColor: 'divider',
                   }}
                 >
                   <Typography
                     sx={{
                       fontFamily: '"Cormorant Garamond", Georgia, serif',
-                      fontSize: { xs: '2rem', md: '2.75rem' },
+                      fontSize: { xs: '1.75rem', md: '2.75rem' },
                       fontWeight: 300,
                       color: 'text.primary',
                       lineHeight: 1,
@@ -175,7 +178,11 @@ export default function HeroSection() {
                   >
                     {stat.number}
                   </Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    sx={{ fontSize: { xs: '0.55rem', md: '0.6875rem' }, lineHeight: 1.3 }}
+                  >
                     {stat.label}
                   </Typography>
                 </Box>
@@ -185,14 +192,14 @@ export default function HeroSection() {
         </Grid>
       </Container>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — desktop only */}
       <Box
         sx={{
           position: 'absolute',
           bottom: 40,
           left: '50%',
           transform: 'translateX(-50%)',
-          display: 'flex',
+          display: { xs: 'none', md: 'flex' },
           flexDirection: 'column',
           alignItems: 'center',
           gap: 1,

@@ -88,9 +88,9 @@ export default function ContactSection() {
               variant="body1"
               sx={{ color: 'rgba(250,250,248,0.6)', mb: 5, maxWidth: 480 }}
             >
-              I&apos;m currently available for new projects — brand identities, art direction,
-              and digital design. Whether you have a clear brief or a half-formed idea,
-              I&apos;d love to explore it with you.
+              พร้อมรับโปรเจ็คใหม่ — Enterprise ERP, System Architecture, IT Infrastructure
+              และ Full-Stack Web Development. มี brief ชัดเจนหรือแค่ไอเดียคร่าวๆ
+              ก็คุยได้เลยครับ
             </Typography>
 
             <Button

@@ -119,94 +119,93 @@ export default function WorkSection() {
                 <Grid size={{ xs: 12, md: 4 }}>
                   <Box
                     sx={{
-                      height: { xs: 180, md: '100%' },
-                      minHeight: { md: 380 },
+                      minHeight: { xs: 'auto', md: 380 },
                       backgroundColor: project.color,
                       display: 'flex',
-                      flexDirection: 'column',
+                      flexDirection: { xs: 'row', md: 'column' },
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: { xs: 'space-between', md: 'center' },
                       position: 'relative',
-                      p: 4,
+                      p: { xs: 3, md: 4 },
+                      gap: { xs: 2, md: 0 },
                     }}
                   >
                     {/* Big number */}
                     <Typography
                       sx={{
                         fontFamily: '"Cormorant Garamond", Georgia, serif',
-                        fontSize: { xs: '5rem', md: '8rem' },
+                        fontSize: { xs: '3.5rem', md: '8rem' },
                         fontWeight: 300,
                         color: project.accent + '30',
                         lineHeight: 1,
                         userSelect: 'none',
-                        mb: 2,
+                        mb: { xs: 0, md: 2 },
+                        flexShrink: 0,
                       }}
                     >
                       {project.id}
                     </Typography>
 
-                    {/* Deploy badge */}
-                    <Box
-                      sx={{
-                        px: 2,
-                        py: 0.75,
-                        border: '1px solid',
-                        borderColor: project.accent + '50',
-                        textAlign: 'center',
-                      }}
-                    >
-                      <Typography
-                        variant="caption"
-                        sx={{ color: project.accent, display: 'block', letterSpacing: '0.12em' }}
+                    {/* Deploy badge + URL — inline on mobile */}
+                    <Box sx={{ textAlign: { xs: 'right', md: 'center' }, flex: 1 }}>
+                      <Box
+                        sx={{
+                          px: 2,
+                          py: 0.75,
+                          border: '1px solid',
+                          borderColor: project.accent + '50',
+                          display: 'inline-block',
+                          mb: 1,
+                        }}
                       >
-                        {project.deployLabel}
-                      </Typography>
-                      <Typography
-                        variant="caption"
-                        sx={{ color: 'text.secondary', fontSize: '0.6rem', letterSpacing: '0.08em' }}
-                      >
-                        {project.deployDetail}
-                      </Typography>
+                        <Typography
+                          variant="caption"
+                          sx={{ color: project.accent, display: 'block', letterSpacing: '0.1em' }}
+                        >
+                          {project.deployLabel}
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          sx={{ color: 'text.secondary', fontSize: '0.58rem', letterSpacing: '0.06em' }}
+                        >
+                          {project.deployDetail}
+                        </Typography>
+                      </Box>
+
+                      {/* URL / Intranet label */}
+                      {project.url ? (
+                        <Typography
+                          component="a"
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          variant="caption"
+                          sx={{
+                            display: 'block',
+                            color: 'text.secondary',
+                            textDecoration: 'none',
+                            fontSize: '0.58rem',
+                            letterSpacing: '0.08em',
+                            transition: 'color 0.2s',
+                            '&:hover': { color: project.accent },
+                          }}
+                        >
+                          ↗ {project.url.replace('https://', '')}
+                        </Typography>
+                      ) : (
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            display: 'block',
+                            color: 'text.secondary',
+                            fontSize: '0.58rem',
+                            letterSpacing: '0.06em',
+                          }}
+                        >
+                          🔒 Intranet — Not publicly accessible
+                        </Typography>
+                      )}
                     </Box>
-
-                    {/* URL link */}
-                    {project.url && (
-                      <Typography
-                        component="a"
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variant="caption"
-                        sx={{
-                          position: 'absolute',
-                          bottom: 20,
-                          color: 'text.secondary',
-                          textDecoration: 'none',
-                          fontSize: '0.6rem',
-                          letterSpacing: '0.1em',
-                          transition: 'color 0.2s',
-                          '&:hover': { color: project.accent },
-                        }}
-                      >
-                        ↗ {project.url.replace('https://', '')}
-                      </Typography>
-                    )}
-
-                    {/* Intranet label */}
-                    {!project.url && (
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          position: 'absolute',
-                          bottom: 20,
-                          color: 'text.secondary',
-                          fontSize: '0.6rem',
-                          letterSpacing: '0.1em',
-                        }}
-                      >
-                        🔒 Intranet — Not publicly accessible
-                      </Typography>
-                    )}
                   </Box>
                 </Grid>
 
