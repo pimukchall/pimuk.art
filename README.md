@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# pimuk.art
 
-## Getting Started
+Portfolio website ส่วนตัวของ Pimuk Artharnnarong — Full-Stack Developer & Enterprise Architect
 
-First, run the development server:
+**Live:** https://www.pimuk.art
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Tech Stack
+
+| Layer | Tech |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| UI Library | MUI v9 (Material UI) |
+| Styling | Emotion + MUI Theme |
+| Font | Cormorant Garamond, Noto Sans Thai |
+| Analytics | Vercel Analytics + Speed Insights |
+| Hosting | Vercel |
+| Language | TypeScript |
+
+---
+
+## Project Structure
+
+```
+app/
+├── components/
+│   ├── Navbar.tsx
+│   ├── HeroSection.tsx
+│   ├── AboutSection.tsx
+│   ├── ServicesSection.tsx
+│   ├── WorkSection.tsx
+│   ├── EducationSection.tsx
+│   ├── ContactSection.tsx
+│   └── Footer.tsx
+├── icon.tsx          # Favicon (generated via ImageResponse)
+├── layout.tsx        # Root layout + Analytics
+├── page.tsx          # Single-page composition
+├── theme.ts          # MUI theme config (colors, typography)
+├── ThemeRegistry.tsx # MUI SSR setup สำหรับ Next.js
+└── globals.css
+public/
+└── profile.jpg       # Profile photo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Development
 
-## Learn More
+```bash
+# ติดตั้ง dependencies
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+# รัน dev server (http://localhost:3000)
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# ตรวจ TypeScript + build
+npm run build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# รัน production build locally
+npm run start
 
-## Deploy on Vercel
+# Lint
+npm run lint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Login
+vercel login
+
+# Link project กับ Vercel (ครั้งแรก)
+vercel link
+
+# Deploy preview
+vercel
+
+# Deploy production
+vercel --prod
+
+# ดู deployment ล่าสุด
+vercel ls
+
+# ดู logs
+vercel logs <deployment-url>
+```
+
+---
+
+## Theme
+
+Brand colors ที่ใช้ตลอดทั้งไซต์:
+
+| Token | Hex | Usage |
+|---|---|---|
+| `primary.main` | `#1a1a1a` | Text, buttons, favicon bg |
+| `secondary.main` | `#c9a96e` | Accent, highlights, favicon text |
+| `background.default` | `#fafaf8` | Page background |
+| `divider` | `#e8e4df` | Borders, lines |
+
+---
+
+## Security Notes
+
+- ไม่มีไฟล์ที่มีข้อมูลส่วนตัวอยู่ใน repository
+- `public/` มีเฉพาะ SVG assets และ `profile.jpg`
+- ไม่มี `.env` ที่มี secrets (ไม่ต้องการ env vars สำหรับ frontend-only site)
