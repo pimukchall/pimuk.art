@@ -34,19 +34,19 @@ const projects = [
     url: null,
     category: 'Internal Enterprise Platform',
     type: 'Intranet · On-premise',
-    year: '2024',
+    year: '2024–Present',
     color: '#eef0f5',
     accent: '#8a97b8',
     deployLabel: 'PM2 + VMware',
     deployDetail: 'Office Server · Intranet Only',
     description:
-      'พัฒนาระบบ ERP ภายในองค์กรตั้งแต่ศูนย์ ครอบคลุมระบบ Auth, การประเมิน, IT Service Desk และโครงสร้างองค์กร บน Nuxt 4 ด้วย Node.js raw MySQL ไม่ใช้ ORM เพื่อควบคุม Performance เต็มที่',
+      'พัฒนาและขยายระบบ ERP ภายในองค์กรอย่างต่อเนื่องตั้งแต่ปี 2024 จนถึงปัจจุบัน ครอบคลุม Auth, การประเมินบุคลากร, IT Service Desk, การประเมินอบรมภายใน, การจองห้องประชุม และการเบิกของสำนักงาน บน Nuxt 4 ด้วย Node.js raw MySQL เพื่อควบคุม Performance เต็มที่',
     stack: [
       { group: 'Frontend', items: ['Nuxt 4', 'Vue 3', 'JavaScript', 'Vuetify'] },
       { group: 'Backend', items: ['Node.js', 'Raw MySQL', 'JWT Auth', 'RBAC'] },
       { group: 'Infra', items: ['PM2', 'VMware ESXi', 'Windows Server', 'Ubuntu Linux', 'Intranet'] },
     ],
-    modules: ['Authentication & SSO', 'Employee Evaluation', 'IT Service Desk', 'Org Structure Chart', 'Module-Based Architecture', 'Role-Based Access Control'],
+    modules: ['Authentication & SSO', 'Employee Evaluation', 'IT Service Desk', 'Org Structure Chart', 'Internal Training & Assessment', 'Meeting Room Booking', 'Office Supply Requisition', 'Role-Based Access Control'],
   },
 ];
 
