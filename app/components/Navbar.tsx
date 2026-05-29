@@ -16,6 +16,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const navLinks = [
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
+  { label: 'Stack', href: '#tech-stack' },
   { label: 'Education', href: '#education' },
   { label: 'Services', href: '#services' },
   { label: 'Contact', href: '#contact' },
