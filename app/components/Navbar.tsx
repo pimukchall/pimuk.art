@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -20,11 +21,14 @@ const navLinks = [
   { label: 'Education', href: '#education' },
   { label: 'Services', href: '#services' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Setup Guide', href: '/guides/dev-setup' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -32,11 +36,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (!href.startsWith('#')) return;
     setDrawerOpen(false);
+    if (!isHome) return;
+    e.preventDefault();
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const resolveHref = (href: string) => (href.startsWith('#') && !isHome ? `/${href}` : href);
 
   return (
     <>
@@ -66,8 +75,12 @@ export default function Navbar() {
           <Typography
             variant="h6"
             component="a"
-            href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            href="/"
+            onClick={(e) => {
+              if (!isHome) return;
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             sx={{
               flexGrow: 1,
               textDecoration: 'none',
@@ -88,8 +101,8 @@ export default function Navbar() {
               <Typography
                 key={link.label}
                 component="a"
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                href={resolveHref(link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 variant="caption"
                 sx={{
                   textDecoration: 'none',
@@ -151,8 +164,8 @@ export default function Navbar() {
             <Typography
               key={link.label}
               component="a"
-              href={link.href}
-              onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+              href={resolveHref(link.href)}
+              onClick={(e) => handleNavClick(e, link.href)}
               variant="caption"
               sx={{
                 textDecoration: 'none',
