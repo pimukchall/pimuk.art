@@ -43,7 +43,8 @@ export default function ServicesSection() {
       id="services"
       sx={{
         py: { xs: 12, md: 18 },
-        backgroundColor: 'background.default',
+          backgroundColor: 'background.default',
+        borderTop: '1px solid', borderTopColor: 'divider',
       }}
     >
       <Container maxWidth="xl" sx={{ px: { xs: 4, md: 10 } }}>
@@ -60,23 +61,18 @@ export default function ServicesSection() {
         >
           <Box>
             <Typography
-              variant="h6"
               sx={{
-                color: 'secondary.main',
+                fontFamily: 'var(--font-geist-mono), monospace',
+                fontSize: '0.7rem',
+                color: '#4ade80',
                 mb: 2,
+                letterSpacing: '0.05em',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 2,
-                '&::before': {
-                  content: '""',
-                  display: 'block',
-                  width: 40,
-                  height: '1px',
-                  backgroundColor: 'secondary.main',
-                },
+                gap: 1,
               }}
             >
-              Services
+              <Box component="span" sx={{ color: '#333' }}>//</Box> 05_services
             </Typography>
             <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
               What I Do
@@ -97,17 +93,17 @@ export default function ServicesSection() {
                 flexDirection: { xs: 'column', md: 'row' },
                 gap: { xs: 3, md: 6 },
                 alignItems: { md: 'flex-start' },
-                '&:hover .service-number': { color: 'secondary.main' },
+                '&:hover .service-number': { color: '#4ade80' },
               }}
             >
               {/* Number */}
               <Typography
                 className="service-number"
                 sx={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
-                  fontSize: { xs: '1.5rem', md: '2rem' },
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                  fontSize: { xs: '1rem', md: '1.25rem' },
                   fontWeight: 300,
-                  color: 'divider',
+                  color: '#222',
                   minWidth: { md: 80 },
                   transition: 'color 0.3s ease',
                   lineHeight: 1,
@@ -143,7 +139,7 @@ export default function ServicesSection() {
                           width: 4,
                           height: 4,
                           borderRadius: '50%',
-                          backgroundColor: 'secondary.main',
+                          backgroundColor: '#4ade80',
                         },
                       }}
                     >

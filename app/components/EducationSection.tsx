@@ -33,7 +33,7 @@ export default function EducationSection() {
       id="education"
       sx={{
         py: { xs: 12, md: 18 },
-        backgroundColor: '#f7f4f0',
+        backgroundColor: 'background.default',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -44,7 +44,7 @@ export default function EducationSection() {
           position: 'absolute',
           top: { xs: -20, md: -40 },
           right: -20,
-          fontFamily: '"Cormorant Garamond", Georgia, serif',
+          fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: { xs: '6rem', md: '14rem' },
           fontWeight: 300,
           color: 'rgba(201,169,110,0.05)',
@@ -63,7 +63,7 @@ export default function EducationSection() {
           <Typography
             variant="h6"
             sx={{
-              color: 'secondary.main',
+              color: '#4ade80',
               mb: 2,
               display: 'flex',
               alignItems: 'center',
@@ -73,7 +73,7 @@ export default function EducationSection() {
                 display: 'block',
                 width: 40,
                 height: '1px',
-                backgroundColor: 'secondary.main',
+                backgroundColor: '#4ade80',
               },
             }}
           >
@@ -91,7 +91,7 @@ export default function EducationSection() {
             <Box sx={{ mb: 5 }}>
               <Typography
                 sx={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: { xs: '2rem', md: '2.75rem' },
                   fontWeight: 400,
                   lineHeight: 1.15,
@@ -158,7 +158,7 @@ export default function EducationSection() {
                 borderColor: { md: 'divider' },
               }}
             >
-              <Typography variant="h6" sx={{ mb: 1, color: 'secondary.main' }}>
+              <Typography variant="h6" sx={{ mb: 1, color: '#4ade80' }}>
                 Relevant Coursework
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
@@ -173,14 +173,14 @@ export default function EducationSection() {
                     size="small"
                     sx={{
                       borderRadius: 0,
-                      backgroundColor: '#ede8e2',
+                      backgroundColor: 'background.paper',
                       color: 'text.secondary',
                       fontSize: '0.6875rem',
                       letterSpacing: '0.04em',
                       height: 28,
                       border: 'none',
                       '&:hover': {
-                        backgroundColor: '#e3dbd2',
+                        backgroundColor: 'divider',
                       },
                     }}
                   />
@@ -190,7 +190,7 @@ export default function EducationSection() {
               <Divider sx={{ mb: 5 }} />
 
               {/* Highlights */}
-              <Typography variant="h6" sx={{ mb: 3, color: 'secondary.main' }}>
+              <Typography variant="h6" sx={{ mb: 3, color: '#4ade80' }}>
                 Highlights
               </Typography>
 
@@ -217,7 +217,7 @@ export default function EducationSection() {
                     mb: i < 2 ? 3.5 : 0,
                     pl: 3,
                     borderLeft: '2px solid',
-                    borderColor: 'secondary.main',
+                    borderColor: '#4ade80',
                   }}
                 >
                   <Typography

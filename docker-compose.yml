@@ -1,0 +1,34 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: pimuk-art-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pimuk_art
+    ports:
+      - "3310:3306"
+    volumes:
+      - pimuk_art_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-uroot", "-proot", "--silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: pimuk-art-pma
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8084:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  pimuk_art_mysql_data:

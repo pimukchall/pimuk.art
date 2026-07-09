@@ -21,6 +21,18 @@ export default function HeroSection() {
         pt: { xs: 10, md: 0 },
       }}
     >
+      {/* Terminal grid overlay */}
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          pointerEvents: 'none',
+        }}
+      />
+
       {/* Decorative vertical line */}
       <Box
         sx={{
@@ -34,48 +46,64 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Decorative number */}
+      {/* Big background glyph */}
       <Typography
         sx={{
           position: 'absolute',
           top: { xs: 100, md: '50%' },
-          right: { xs: 32, md: 80 },
+          right: { xs: 16, md: 80 },
           transform: { md: 'translateY(-50%)' },
-          fontFamily: '"Cormorant Garamond", Georgia, serif',
-          fontSize: { xs: '8rem', md: '16rem' },
-          fontWeight: 300,
-          color: 'rgba(201,169,110,0.06)',
+          fontFamily: 'var(--font-geist-mono), monospace',
+          fontSize: { xs: '8rem', md: '18rem' },
+          fontWeight: 100,
+          color: 'rgba(74,222,128,0.04)',
           lineHeight: 1,
           userSelect: 'none',
           pointerEvents: 'none',
+          letterSpacing: '-0.05em',
         }}
       >
-        01
+        &gt;_
       </Typography>
 
       <Container maxWidth="xl" sx={{ px: { xs: 4, md: 10 } }}>
         <Grid container spacing={4} sx={{ alignItems: 'center' }}>
           <Grid size={{ xs: 12, md: 8 }}>
             <Box>
-              {/* Eyebrow */}
+              {/* Terminal prompt eyebrow */}
               <Typography
-                variant="h6"
                 sx={{
-                  color: 'secondary.main',
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                  fontSize: '0.75rem',
+                  color: '#4ade80',
                   mb: { xs: 3, md: 4 },
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 2,
-                  '&::before': {
-                    content: '""',
-                    display: 'block',
-                    width: 40,
-                    height: '1px',
-                    backgroundColor: 'secondary.main',
-                  },
+                  gap: 1.5,
+                  letterSpacing: '0.05em',
                 }}
               >
-                Full-Stack Developer &amp; Enterprise Architect
+                <Box component="span" sx={{ color: '#333' }}>~/</Box>
+                pimuk.art
+                <Box component="span" sx={{ color: '#444' }}>$</Box>
+                <Box
+                  component="span"
+                  sx={{
+                    color: '#f0f0f0',
+                    '&::after': {
+                      content: '"▋"',
+                      animation: 'blink 1s step-end infinite',
+                      color: '#4ade80',
+                      ml: 0.5,
+                    },
+                    '@keyframes blink': {
+                      '0%, 100%': { opacity: 1 },
+                      '50%': { opacity: 0 },
+                    },
+                  }}
+                >
+                  whoami
+                </Box>
               </Typography>
 
               {/* Main heading */}
@@ -83,18 +111,21 @@ export default function HeroSection() {
                 variant="h1"
                 sx={{
                   mb: { xs: 3, md: 4 },
-                  fontSize: { xs: '2.75rem', sm: '3.75rem', md: '5rem', lg: '6.5rem' },
+                  fontSize: { xs: '2.5rem', sm: '3.25rem', md: '4.5rem', lg: '5.5rem' },
+                  color: 'text.primary',
+                  lineHeight: 1.08,
                 }}
               >
-                Zero to{' '}
-                <Box
-                  component="span"
-                  sx={{ fontStyle: 'italic', color: 'secondary.main' }}
-                >
-                  Production
+                Full-Stack{' '}
+                <Box component="span" sx={{ color: '#4ade80' }}>
+                  Dev
                 </Box>
+                {' '}+
                 <br />
-                Enterprise Systems
+                Enterprise{' '}
+                <Box component="span" sx={{ color: 'text.secondary', fontWeight: 100 }}>
+                  Architect
+                </Box>
               </Typography>
 
               {/* Subtext */}
@@ -104,7 +135,6 @@ export default function HeroSection() {
                   color: 'text.secondary',
                   maxWidth: 520,
                   mb: { xs: 5, md: 7 },
-                  fontSize: { xs: '0.9375rem', md: '1.0625rem' },
                 }}
               >
                 ออกแบบและพัฒนาระบบ ERP &amp; ISO Digital Transformation ตั้งแต่ศูนย์
@@ -116,32 +146,25 @@ export default function HeroSection() {
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                 <Button
                   variant="contained"
-                  href="#work"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  sx={{ alignSelf: { xs: 'flex-start' } }}
+                  onClick={() =>
+                    document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' })
+                  }
                 >
-                  Selected Projects
+                  ./projects
                 </Button>
                 <Button
                   variant="outlined"
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  sx={{ alignSelf: { xs: 'flex-start' } }}
+                  onClick={() =>
+                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
+                  }
                 >
-                  Get in Touch
+                  ./contact
                 </Button>
               </Stack>
             </Box>
           </Grid>
 
           <Grid size={{ xs: 12, md: 4 }}>
-            {/* Stats — row on md+, 3-col grid on xs */}
             <Box
               sx={{
                 display: 'grid',
@@ -151,9 +174,9 @@ export default function HeroSection() {
               }}
             >
               {[
-                { number: 'ERP', label: 'Zero to Production' },
-                { number: 'ISO', label: 'Digital Transformation' },
-                { number: 'SSO', label: 'Enterprise IAM' },
+                { label: 'ERP', sub: '// zero to production' },
+                { label: 'SSO', sub: '// enterprise iam' },
+                { label: 'AI', sub: '// driven development' },
               ].map((stat) => (
                 <Box
                   key={stat.label}
@@ -161,29 +184,31 @@ export default function HeroSection() {
                     mb: { xs: 0, md: 5 },
                     pl: { md: 4 },
                     pt: { xs: 2, md: 0 },
-                    borderLeft: { md: '1px solid' },
-                    borderTop: { xs: '1px solid', md: 'none' },
-                    borderColor: 'divider',
+                    borderLeft: { md: '1px solid #1e1e1e' },
+                    borderTop: { xs: '1px solid #1e1e1e', md: 'none' },
                   }}
                 >
                   <Typography
                     sx={{
-                      fontFamily: '"Cormorant Garamond", Georgia, serif',
-                      fontSize: { xs: '1.75rem', md: '2.75rem' },
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                      fontSize: { xs: '1.75rem', md: '2.5rem' },
                       fontWeight: 300,
-                      color: 'text.primary',
+                      color: '#4ade80',
                       lineHeight: 1,
                       mb: 0.5,
                     }}
                   >
-                    {stat.number}
+                    {stat.label}
                   </Typography>
                   <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    sx={{ fontSize: { xs: '0.55rem', md: '0.6875rem' }, lineHeight: 1.3 }}
+                    sx={{
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                      fontSize: { xs: '0.5rem', md: '0.6rem' },
+                      color: '#444',
+                      letterSpacing: '0.05em',
+                    }}
                   >
-                    {stat.label}
+                    {stat.sub}
                   </Typography>
                 </Box>
               ))}
@@ -192,7 +217,7 @@ export default function HeroSection() {
         </Grid>
       </Container>
 
-      {/* Scroll indicator — desktop only */}
+      {/* Scroll indicator */}
       <Box
         sx={{
           position: 'absolute',
@@ -205,8 +230,15 @@ export default function HeroSection() {
           gap: 1,
         }}
       >
-        <Typography variant="caption" color="text.secondary">
-          Scroll
+        <Typography
+          sx={{
+            fontFamily: 'var(--font-geist-mono), monospace',
+            fontSize: '0.6rem',
+            color: '#333',
+            letterSpacing: '0.1em',
+          }}
+        >
+          scroll
         </Typography>
         <Box
           sx={{
@@ -222,7 +254,7 @@ export default function HeroSection() {
               left: 0,
               width: '100%',
               height: '50%',
-              backgroundColor: 'secondary.main',
+              backgroundColor: '#4ade80',
               animation: 'scrollLine 1.5s ease-in-out infinite',
             },
             '@keyframes scrollLine': {

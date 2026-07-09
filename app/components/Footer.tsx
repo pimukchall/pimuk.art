@@ -10,9 +10,9 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        backgroundColor: '#111111',
+        backgroundColor: 'background.default',
         py: 4,
-        borderTop: '1px solid rgba(255,255,255,0.06)',
+        borderTop: '1px solid', borderTopColor: 'divider',
       }}
     >
       <Container maxWidth="xl" sx={{ px: { xs: 4, md: 10 } }}>
@@ -27,22 +27,33 @@ export default function Footer() {
         >
           <Typography
             sx={{
-              fontFamily: '"Cormorant Garamond", Georgia, serif',
-              fontSize: '0.9rem',
-              letterSpacing: '0.15em',
-              color: 'rgba(250,250,248,0.3)',
-              textTransform: 'uppercase',
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: '0.7rem',
+              letterSpacing: '0.05em',
+              color: '#333',
             }}
           >
-            Pimuk
+            ~/pimuk.art
           </Typography>
 
-          <Typography variant="caption" sx={{ color: 'rgba(250,250,248,0.2)' }}>
-            © {new Date().getFullYear()} Pimuk Artharnnarong. All rights reserved.
+          <Typography
+            sx={{
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: '0.65rem',
+              color: '#2a2a2a',
+            }}
+          >
+            © {new Date().getFullYear()} Pimuk Artharnnarong
           </Typography>
 
-          <Typography variant="caption" sx={{ color: 'rgba(250,250,248,0.2)' }}>
-            Nonthaburi, Thailand
+          <Typography
+            sx={{
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: '0.65rem',
+              color: '#2a2a2a',
+            }}
+          >
+            Nonthaburi, TH
           </Typography>
         </Box>
       </Container>

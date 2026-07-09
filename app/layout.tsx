@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import ThemeRegistry from './ThemeRegistry';
@@ -7,6 +7,11 @@ import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
+  subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
   subsets: ['latin'],
 });
 
@@ -22,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th" className={geistSans.variable}>
+    <html lang="th" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <ThemeRegistry>{children}</ThemeRegistry>
         <Analytics />

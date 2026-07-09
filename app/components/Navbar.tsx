@@ -6,13 +6,14 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { useThemeMode } from '../ThemeContext';
 
 const navLinks = [
   { label: 'Work', href: '#work' },
@@ -27,6 +28,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { mode, toggleMode } = useThemeMode();
   const pathname = usePathname();
   const isHome = pathname === '/';
 
@@ -53,9 +55,9 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: scrolled ? 'rgba(250,250,248,0.92)' : 'transparent',
+          backgroundColor: scrolled ? 'rgba(10,10,10,0.92)' : 'transparent',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: scrolled ? '1px solid' : '1px solid',
+          borderBottom: '1px solid',
           borderColor: scrolled ? 'divider' : 'transparent',
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
           color: 'text.primary',
@@ -85,14 +87,13 @@ export default function Navbar() {
               flexGrow: 1,
               textDecoration: 'none',
               color: 'text.primary',
-              fontFamily: '"Noto Sans Thai", var(--font-geist-sans), system-ui, sans-serif',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: '0.75rem',
+              fontWeight: 400,
+              letterSpacing: '0.05em',
             }}
           >
-            Pimuk
+            ~/pimuk
           </Typography>
 
           {/* Desktop Nav */}
@@ -109,13 +110,44 @@ export default function Navbar() {
                   color: 'text.secondary',
                   cursor: 'pointer',
                   transition: 'color 0.2s',
-                  '&:hover': { color: 'secondary.main' },
+                  '&:hover': { color: '#4ade80' },
                 }}
               >
                 {link.label}
               </Typography>
             ))}
           </Box>
+
+          {/* Theme toggle */}
+          <Tooltip title={mode === 'dark' ? 'Light mode' : 'Dark mode'} placement="bottom">
+            <IconButton
+              onClick={toggleMode}
+              aria-label="Toggle theme"
+              size="small"
+              sx={{
+                ml: { xs: 1, md: 3 },
+                color: 'text.secondary',
+                fontFamily: 'var(--font-geist-mono), monospace',
+                fontSize: '0.65rem',
+                borderRadius: 0,
+                px: 1,
+                py: 0.5,
+                border: '1px solid',
+                borderColor: 'divider',
+                gap: 0.75,
+                '&:hover': { borderColor: '#4ade80', color: '#4ade80' },
+                transition: 'all 0.2s',
+              }}
+            >
+              {mode === 'dark' ? '☀' : '◐'}
+              <Box
+                component="span"
+                sx={{ display: { xs: 'none', md: 'inline' }, fontSize: '0.6rem', letterSpacing: '0.05em' }}
+              >
+                {mode === 'dark' ? 'light' : 'dark'}
+              </Box>
+            </IconButton>
+          </Tooltip>
 
           {/* Mobile menu */}
           <IconButton
@@ -151,10 +183,9 @@ export default function Navbar() {
         </Box>
 
         <Typography
-          variant="h6"
-          sx={{ mb: 4, fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: '1rem', letterSpacing: '0.2em' }}
+          sx={{ mb: 4, fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.8rem', letterSpacing: '0.05em', color: 'text.primary' }}
         >
-          Pimuk
+          ~/pimuk.art
         </Typography>
 
         <Divider sx={{ mb: 4 }} />
@@ -176,7 +207,7 @@ export default function Navbar() {
                 display: 'block',
                 py: 0.5,
                 transition: 'color 0.2s',
-                '&:hover': { color: 'secondary.main' },
+                '&:hover': { color: '#4ade80' },
               }}
             >
               {link.label}

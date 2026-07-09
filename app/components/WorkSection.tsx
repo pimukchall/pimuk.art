@@ -15,38 +15,74 @@ const projects = [
     category: 'Commercial Web Application',
     type: 'Public · Custom Domain',
     year: '2024',
-    color: '#f5f0e8',
-    accent: '#c9a96e',
+    accent: '#4ade80',
     deployLabel: 'Vercel + Railway',
     deployDetail: 'Custom Domain · Auto CI/CD',
     description:
-      'ออกแบบและพัฒนาเว็บไซต์เต็มรูปแบบสำหรับธุรกิจรับเหมาก่อสร้างและรีโนเวท ครอบคลุมตั้งแต่ Landing Page จนถึง Backend API และ Database ด้วยตนเองทั้งหมด',
+      'ออกแบบและพัฒนาเว็บไซต์เต็มรูปแบบสำหรับธุรกิจรับเหมาก่อสร้างและรีโนเวท ครอบคลุมตั้งแต่ Landing Page จนถึง Backend API และ Database ด้วยตนเองทั้งหมด พร้อม Admin Dashboard สำหรับจัดการ Portfolio Content',
     stack: [
-      { group: 'Frontend', items: ['Next.js 15', 'App Router', 'Tailwind CSS', 'TypeScript'] },
-      { group: 'Backend', items: ['Node.js', 'Prisma ORM', 'MySQL', 'RESTful API'] },
-      { group: 'Infra', items: ['Vercel', 'Railway', 'Custom Domain', 'Auto Deploy'] },
+      { group: 'Frontend', items: ['Next.js 15', 'App Router', 'Tailwind CSS v4', 'Framer Motion'] },
+      { group: 'Backend', items: ['Express.js 5', 'Prisma ORM', 'MySQL 8', 'RESTful API'] },
+      { group: 'Infra', items: ['Vercel', 'Railway', 'Cloudinary', 'Auto Deploy'] },
     ],
-    modules: ['Landing Page', 'Service Showcase', 'Project Gallery', 'Contact & Inquiry', 'Admin Dashboard', 'SEO Optimisation'],
+    modules: ['Landing Page', 'Project Gallery', 'Design Showcase', 'Furniture Catalog', 'News & Articles', 'Contact & Inquiry', 'Admin Dashboard', 'SEO Optimisation'],
   },
   {
     id: '02',
-    title: 'Enterprise ERP System',
+    title: 'Emperor ERP',
     url: null,
     category: 'Internal Enterprise Platform',
     type: 'Intranet · On-premise',
     year: '2024–Present',
-    color: '#eef0f5',
-    accent: '#8a97b8',
-    deployLabel: 'PM2 + VMware',
+    accent: '#a78bfa',
+    deployLabel: 'PM2 + VMware ESXi',
     deployDetail: 'Office Server · Intranet Only',
     description:
-      'พัฒนาและขยายระบบ ERP ภายในองค์กรอย่างต่อเนื่องตั้งแต่ปี 2024 จนถึงปัจจุบัน ครอบคลุม Auth, การประเมินบุคลากร, IT Service Desk, การประเมินอบรมภายใน, การจองห้องประชุม และการเบิกของสำนักงาน บน Nuxt 4 ด้วย Node.js raw MySQL เพื่อควบคุม Performance เต็มที่',
+      'พัฒนาและขยายระบบ ERP ภายในองค์กรอย่างต่อเนื่อง ครอบคลุม Multi-Auth (Local / AD / Microsoft 365 OAuth 2.0), Employee Evaluation, IT Service Desk, Training Assessment, Meeting Room Booking, Supply Requisition บน Nuxt 4 + Node.js / Raw MySQL เพื่อควบคุม Performance เต็มที่',
     stack: [
-      { group: 'Frontend', items: ['Nuxt 4', 'Vue 3', 'JavaScript', 'Vuetify'] },
-      { group: 'Backend', items: ['Node.js', 'Raw MySQL', 'JWT Auth', 'RBAC'] },
-      { group: 'Infra', items: ['PM2', 'VMware ESXi', 'Windows Server', 'Ubuntu Linux', 'Intranet'] },
+      { group: 'Frontend', items: ['Nuxt 4', 'Vue 3', 'Vuetify', 'Pinia'] },
+      { group: 'Backend', items: ['Node.js / Express', 'Raw MySQL', 'JWT', 'RBAC'] },
+      { group: 'Infra', items: ['PM2', 'VMware ESXi', 'Ubuntu Linux', 'Windows Server'] },
     ],
-    modules: ['Authentication & SSO', 'Employee Evaluation', 'IT Service Desk', 'Org Structure Chart', 'Internal Training & Assessment', 'Meeting Room Booking', 'Office Supply Requisition', 'Role-Based Access Control'],
+    modules: ['Multi-Auth (Local / AD / M365)', 'Employee Evaluation', 'IT Service Desk', 'Org Structure Chart', 'Internal Training', 'Meeting Room Booking', 'Supply Requisition', 'Network Health Monitor'],
+  },
+  {
+    id: '03',
+    title: 'Mavixtech',
+    url: 'https://mavixtech.vercel.app',
+    category: 'Tech Company Website + CMS',
+    type: 'Public · Commercial',
+    year: '2025',
+    accent: '#38bdf8',
+    deployLabel: 'Vercel + Railway',
+    deployDetail: 'Serverless · Auto Deploy',
+    description:
+      'เว็บไซต์บริษัทเทคโนโลยีพร้อม Admin CMS เต็มรูปแบบ ออกแบบ UI ที่ทันสมัยด้วย Framer Motion Animation รองรับการจัดการ Projects, News และ Contact Submissions ผ่าน Dashboard พร้อม NextAuth Authentication',
+    stack: [
+      { group: 'Frontend', items: ['Next.js App Router', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
+      { group: 'Backend', items: ['Next.js API Routes', 'Prisma ORM', 'MySQL', 'NextAuth v4'] },
+      { group: 'Media', items: ['Cloudinary', 'Image Optimization', 'Sharp'] },
+    ],
+    modules: ['Home · About · Services', 'Projects Portfolio', 'News & Articles', 'Contact Form', 'Admin Dashboard', 'Project CMS', 'News CMS', 'Contact Management'],
+  },
+  {
+    id: '04',
+    title: 'Leo Furniture',
+    url: 'https://leo-project-ruby.vercel.app',
+    category: 'Multilingual Brand Website + CMS',
+    type: 'Public · i18n · Multi-lang',
+    year: '2025',
+    accent: '#fb923c',
+    deployLabel: 'Vercel',
+    deployDetail: 'Serverless · Global CDN',
+    description:
+      'เว็บไซต์แบรนด์เฟอร์นิเจอร์คลาสสิกรองรับหลายภาษา (next-intl) พร้อม Product Catalog, Project Portfolio และ Admin CMS ออกแบบ Tree Structure Data Model สำหรับ i18n ที่ Scalable และ Admin Dashboard สำหรับจัดการ Products, Projects และ Inquiries',
+    stack: [
+      { group: 'Frontend', items: ['Next.js App Router', 'next-intl (i18n)', 'Tailwind CSS v4', 'Framer Motion'] },
+      { group: 'Backend', items: ['Next.js API Routes', 'Prisma ORM', 'MySQL', 'NextAuth v4'] },
+      { group: 'Infra', items: ['Vercel', 'Cloudinary', 'Sharp', 'SEO + Sitemap'] },
+    ],
+    modules: ['Multi-language (TH / EN)', 'Collections Catalog', 'Project Portfolio', 'About & Contact', 'Inquiry Form', 'Admin: Products', 'Admin: Projects', 'Admin: Inquiries'],
   },
 ];
 
@@ -58,6 +94,7 @@ export default function WorkSection() {
       sx={{
         py: { xs: 12, md: 18 },
         backgroundColor: 'background.default',
+        borderTop: '1px solid', borderTopColor: 'divider',
       }}
     >
       <Container maxWidth="xl" sx={{ px: { xs: 4, md: 10 } }}>
@@ -74,26 +111,21 @@ export default function WorkSection() {
         >
           <Box>
             <Typography
-              variant="h6"
               sx={{
-                color: 'secondary.main',
+                fontFamily: 'var(--font-geist-mono), monospace',
+                fontSize: '0.7rem',
+                color: '#4ade80',
                 mb: 2,
+                letterSpacing: '0.05em',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 2,
-                '&::before': {
-                  content: '""',
-                  display: 'block',
-                  width: 40,
-                  height: '1px',
-                  backgroundColor: 'secondary.main',
-                },
+                gap: 1,
               }}
             >
-              Selected Work
+              <Box component="span" sx={{ color: '#333' }}>//</Box> 03_work
             </Typography>
             <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
-              Key Projects
+              Selected Work
             </Typography>
           </Box>
           <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 300 }}>
@@ -102,25 +134,24 @@ export default function WorkSection() {
         </Box>
 
         {/* Project cards */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 4, md: 3 } }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 3, md: 2 } }}>
           {projects.map((project) => (
             <Box
               key={project.id}
               sx={{
-                border: '1px solid',
-                borderColor: 'divider',
+                border: '1px solid', borderColor: 'divider',
                 overflow: 'hidden',
-                transition: 'border-color 0.3s ease',
-                '&:hover': { borderColor: project.accent + '80' },
+                transition: 'border-color 0.25s ease',
+                '&:hover': { borderColor: project.accent + '50' },
               }}
             >
               <Grid container>
                 {/* Left: Visual panel */}
-                <Grid size={{ xs: 12, md: 4 }}>
+                <Grid size={{ xs: 12, md: 3 }}>
                   <Box
                     sx={{
                       minHeight: { xs: 'auto', md: 380 },
-                      backgroundColor: project.color,
+                      backgroundColor: 'background.default',
                       display: 'flex',
                       flexDirection: { xs: 'row', md: 'column' },
                       alignItems: 'center',
@@ -128,64 +159,72 @@ export default function WorkSection() {
                       position: 'relative',
                       p: { xs: 3, md: 4 },
                       gap: { xs: 2, md: 0 },
+                      borderRight: { md: '1px solid' }, borderRightColor: { md: 'divider' },
                     }}
                   >
-                    {/* Big number */}
+                    {/* Number */}
                     <Typography
                       sx={{
-                        fontFamily: '"Cormorant Garamond", Georgia, serif',
-                        fontSize: { xs: '3.5rem', md: '8rem' },
-                        fontWeight: 300,
-                        color: project.accent + '30',
+                        fontFamily: 'var(--font-geist-mono), monospace',
+                        fontSize: { xs: '3rem', md: '7rem' },
+                        fontWeight: 100,
+                        color: project.accent + '15',
                         lineHeight: 1,
                         userSelect: 'none',
                         mb: { xs: 0, md: 2 },
                         flexShrink: 0,
+                        letterSpacing: '-0.05em',
                       }}
                     >
                       {project.id}
                     </Typography>
 
-                    {/* Deploy badge + URL — inline on mobile */}
                     <Box sx={{ textAlign: { xs: 'right', md: 'center' }, flex: 1 }}>
                       <Box
                         sx={{
                           px: 2,
                           py: 0.75,
-                          border: '1px solid',
-                          borderColor: project.accent + '50',
+                          border: '1px solid #222',
                           display: 'inline-block',
                           mb: 1,
                         }}
                       >
                         <Typography
-                          variant="caption"
-                          sx={{ color: project.accent, display: 'block', letterSpacing: '0.1em' }}
+                          sx={{
+                            fontFamily: 'var(--font-geist-mono), monospace',
+                            fontSize: '0.6rem',
+                            color: project.accent,
+                            display: 'block',
+                            letterSpacing: '0.08em',
+                          }}
                         >
                           {project.deployLabel}
                         </Typography>
                         <Typography
-                          variant="caption"
-                          sx={{ color: 'text.secondary', fontSize: '0.58rem', letterSpacing: '0.06em' }}
+                          sx={{
+                            fontFamily: 'var(--font-geist-mono), monospace',
+                            fontSize: '0.55rem',
+                            color: '#444',
+                            letterSpacing: '0.05em',
+                          }}
                         >
                           {project.deployDetail}
                         </Typography>
                       </Box>
 
-                      {/* URL / Intranet label */}
                       {project.url ? (
                         <Typography
                           component="a"
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          variant="caption"
                           sx={{
                             display: 'block',
-                            color: 'text.secondary',
+                            fontFamily: 'var(--font-geist-mono), monospace',
+                            fontSize: '0.55rem',
+                            color: '#444',
                             textDecoration: 'none',
-                            fontSize: '0.58rem',
-                            letterSpacing: '0.08em',
+                            letterSpacing: '0.05em',
                             transition: 'color 0.2s',
                             '&:hover': { color: project.accent },
                           }}
@@ -194,15 +233,15 @@ export default function WorkSection() {
                         </Typography>
                       ) : (
                         <Typography
-                          variant="caption"
                           sx={{
                             display: 'block',
-                            color: 'text.secondary',
-                            fontSize: '0.58rem',
-                            letterSpacing: '0.06em',
+                            fontFamily: 'var(--font-geist-mono), monospace',
+                            fontSize: '0.55rem',
+                            color: '#333',
+                            letterSpacing: '0.05em',
                           }}
                         >
-                          🔒 Intranet — Not publicly accessible
+                          🔒 not public
                         </Typography>
                       )}
                     </Box>
@@ -210,27 +249,65 @@ export default function WorkSection() {
                 </Grid>
 
                 {/* Right: Details panel */}
-                <Grid size={{ xs: 12, md: 8 }}>
-                  <Box sx={{ p: { xs: 3, md: 5 }, height: '100%', display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <Grid size={{ xs: 12, md: 9 }}>
+                  <Box
+                    sx={{
+                      p: { xs: 3, md: 5 },
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 3,
+                    }}
+                  >
                     {/* Header */}
                     <Box>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 0.75 }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                          mb: 0.75,
+                        }}
+                      >
                         <Typography
                           variant="h3"
-                          sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }}
+                          sx={{ fontSize: { xs: '1.5rem', md: '1.875rem' } }}
                         >
                           {project.title}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, flexShrink: 0 }}>
+                        <Typography
+                          sx={{
+                            fontFamily: 'var(--font-geist-mono), monospace',
+                            fontSize: '0.65rem',
+                            color: '#444',
+                            mt: 0.5,
+                            flexShrink: 0,
+                          }}
+                        >
                           {project.year}
                         </Typography>
                       </Box>
                       <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', flexWrap: 'wrap' }}>
-                        <Typography variant="caption" sx={{ color: project.accent }}>
+                        <Typography
+                          sx={{
+                            fontFamily: 'var(--font-geist-mono), monospace',
+                            fontSize: '0.65rem',
+                            color: project.accent,
+                            letterSpacing: '0.05em',
+                          }}
+                        >
                           {project.category}
                         </Typography>
-                        <Box sx={{ width: 3, height: 3, borderRadius: '50%', backgroundColor: 'divider' }} />
-                        <Typography variant="caption" color="text.secondary">
+                        <Box
+                          sx={{ width: 3, height: 3, borderRadius: '50%', backgroundColor: '#333' }}
+                        />
+                        <Typography
+                          sx={{
+                            fontFamily: 'var(--font-geist-mono), monospace',
+                            fontSize: '0.6rem',
+                            color: '#444',
+                          }}
+                        >
                           {project.type}
                         </Typography>
                       </Box>
@@ -241,30 +318,43 @@ export default function WorkSection() {
                       {project.description}
                     </Typography>
 
-                    <Divider />
+                    <Divider sx={{ borderColor: 'divider' }} />
 
-                    {/* Tech stack — 3 columns */}
+                    {/* Tech stack */}
                     <Grid container spacing={0}>
                       {project.stack.map((s, i) => (
                         <Grid key={s.group} size={{ xs: 12, sm: 4 }}>
                           <Box
                             sx={{
                               pl: i > 0 ? { sm: 3 } : 0,
-                              borderLeft: i > 0 ? { sm: '1px solid' } : 'none',
-                              borderColor: 'divider',
+                              borderLeft: i > 0 ? { sm: '1px solid' } : 'none', borderLeftColor: i > 0 ? 'divider' : undefined,
                               pb: { xs: i < project.stack.length - 1 ? 3 : 0, sm: 0 },
                               mb: { xs: i < project.stack.length - 1 ? 3 : 0, sm: 0 },
-                              borderBottom: { xs: i < project.stack.length - 1 ? '1px solid' : 'none', sm: 'none' },
+                              borderBottom: {
+                                xs: i < project.stack.length - 1 ? '1px solid' : 'none',
+                                sm: 'none',
+                              },
                             }}
                           >
                             <Typography
-                              variant="caption"
-                              sx={{ color: project.accent, display: 'block', mb: 1.5, letterSpacing: '0.1em' }}
+                              sx={{
+                                fontFamily: 'var(--font-geist-mono), monospace',
+                                fontSize: '0.6rem',
+                                color: project.accent,
+                                display: 'block',
+                                mb: 1.5,
+                                letterSpacing: '0.05em',
+                              }}
                             >
                               {s.group}
                             </Typography>
                             {s.items.map((item) => (
-                              <Typography key={item} variant="body2" color="text.secondary" sx={{ mb: 0.75, fontSize: '0.8rem' }}>
+                              <Typography
+                                key={item}
+                                variant="body2"
+                                color="text.secondary"
+                                sx={{ mb: 0.75, fontSize: '0.8rem' }}
+                              >
                                 {item}
                               </Typography>
                             ))}
@@ -273,12 +363,21 @@ export default function WorkSection() {
                       ))}
                     </Grid>
 
-                    <Divider />
+                    <Divider sx={{ borderColor: 'divider' }} />
 
                     {/* Modules */}
                     <Box>
-                      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1.5 }}>
-                        Modules / Features
+                      <Typography
+                        sx={{
+                          fontFamily: 'var(--font-geist-mono), monospace',
+                          fontSize: '0.6rem',
+                          color: '#444',
+                          display: 'block',
+                          mb: 1.5,
+                          letterSpacing: '0.05em',
+                        }}
+                      >
+                        // modules
                       </Typography>
                       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                         {project.modules.map((mod) => (
@@ -287,13 +386,11 @@ export default function WorkSection() {
                             label={mod}
                             size="small"
                             sx={{
-                              borderRadius: 0,
-                              backgroundColor: project.color,
-                              color: 'text.secondary',
-                              fontSize: '0.6rem',
-                              letterSpacing: '0.08em',
-                              border: 'none',
                               height: 22,
+                              fontSize: '0.58rem',
+                              color: '#555',
+                              '&:hover': { borderColor: project.accent + '50', color: project.accent },
+                              transition: 'all 0.2s',
                             }}
                           />
                         ))}

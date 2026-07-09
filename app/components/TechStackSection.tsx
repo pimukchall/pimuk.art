@@ -104,7 +104,7 @@ export default function TechStackSection() {
     <Box
       component="section"
       id="tech-stack"
-      sx={{ py: { xs: 12, md: 18 }, backgroundColor: '#f2ede7' }}
+      sx={{ py: { xs: 12, md: 18 }, backgroundColor: 'background.default' }}
     >
       <Container maxWidth="xl" sx={{ px: { xs: 4, md: 10 } }}>
         {/* Header */}
@@ -112,7 +112,7 @@ export default function TechStackSection() {
           <Typography
             variant="h6"
             sx={{
-              color: 'secondary.main',
+              color: '#4ade80',
               mb: 2,
               display: 'flex',
               alignItems: 'center',
@@ -122,7 +122,7 @@ export default function TechStackSection() {
                 display: 'block',
                 width: 40,
                 height: '1px',
-                backgroundColor: 'secondary.main',
+                backgroundColor: '#4ade80',
               },
             }}
           >
@@ -139,7 +139,7 @@ export default function TechStackSection() {
           >
             <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
               Technology &{' '}
-              <Box component="span" sx={{ fontStyle: 'italic', color: 'secondary.main' }}>
+              <Box component="span" sx={{ fontStyle: 'italic', color: '#4ade80' }}>
                 Expertise
               </Box>
             </Typography>
@@ -164,7 +164,7 @@ export default function TechStackSection() {
               >
                 <Typography
                   variant="h6"
-                  sx={{ mb: 3, color: 'secondary.main', fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}
+                  sx={{ mb: 3, color: '#4ade80', fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}
                 >
                   {cat.label}
                 </Typography>
@@ -210,13 +210,13 @@ export default function TechStackSection() {
                     flexDirection: { xs: 'column', md: 'row' },
                     gap: { xs: 2, md: 8 },
                     alignItems: { md: 'flex-start' },
-                    '&:hover .cap-index': { color: 'secondary.main' },
+                    '&:hover .cap-index': { color: '#4ade80' },
                   }}
                 >
                   <Typography
                     className="cap-index"
                     sx={{
-                      fontFamily: '"Cormorant Garamond", Georgia, serif',
+                      fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: '1.1rem',
                       color: 'divider',
                       minWidth: { md: 32 },
