@@ -101,9 +101,14 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
       files.map(async (file) => {
         const fd = new FormData();
         fd.append('file', file);
-        const res = await fetch('/api/upload', { method: 'POST', body: fd });
-        const { url } = await res.json();
-        return url as string;
+        fd.append('upload_preset', 'pimuk_art_unsigned');
+        fd.append('folder', 'pimuk-art/projects');
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+          { method: 'POST', body: fd }
+        );
+        const data = await res.json();
+        return data.secure_url as string;
       })
     );
     setForm((prev) => ({ ...prev, images: [...prev.images, ...urls] }));
