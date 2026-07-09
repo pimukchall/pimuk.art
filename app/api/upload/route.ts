@@ -3,6 +3,7 @@ import { auth } from '@/auth';
 import cloudinary from '@/lib/cloudinary';
 
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
   const session = await auth();
