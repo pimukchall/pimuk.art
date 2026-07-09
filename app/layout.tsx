@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import ThemeRegistry from './ThemeRegistry';
+import AdminBar from './components/AdminBar';
 import './globals.css';
 
 const geistSans = Geist({
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="th" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <ThemeRegistry>{children}</ThemeRegistry>
+        <AdminBar />
         <Analytics />
         <SpeedInsights />
       </body>

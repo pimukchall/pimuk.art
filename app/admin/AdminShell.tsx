@@ -11,6 +11,7 @@ import type { ReactNode } from 'react';
 
 const navItems = [
   { label: 'contacts', href: '/admin/contacts' },
+  { label: 'projects', href: '/admin/projects' },
   { label: 'users', href: '/admin/users' },
 ];
 
@@ -69,6 +70,22 @@ export default function AdminShell({ children, session }: { children: ReactNode;
         ))}
 
         <Box sx={{ flex: 1 }} />
+
+        <Typography
+          component="a"
+          href="/"
+          sx={{
+            fontFamily: 'var(--font-geist-mono), monospace',
+            fontSize: '0.65rem',
+            color: '#444',
+            textDecoration: 'none',
+            letterSpacing: '0.05em',
+            transition: 'color 0.2s',
+            '&:hover': { color: '#4ade80' },
+          }}
+        >
+          ↗ view_site
+        </Typography>
 
         <Typography
           sx={{

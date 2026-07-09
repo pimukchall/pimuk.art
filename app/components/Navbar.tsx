@@ -118,6 +118,25 @@ export default function Navbar() {
             ))}
           </Box>
 
+          {/* Admin login */}
+          <Typography
+            component="a"
+            href="/admin"
+            sx={{
+              display: { xs: 'none', md: 'inline' },
+              ml: 4,
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: '0.6rem',
+              color: '#333',
+              textDecoration: 'none',
+              letterSpacing: '0.05em',
+              transition: 'color 0.2s',
+              '&:hover': { color: '#4ade80' },
+            }}
+          >
+            _login
+          </Typography>
+
           {/* Theme toggle */}
           <Tooltip title={mode === 'dark' ? 'Light mode' : 'Dark mode'} placement="bottom">
             <IconButton
@@ -191,7 +210,7 @@ export default function Navbar() {
         <Divider sx={{ mb: 4 }} />
 
         <Stack spacing={3}>
-          {navLinks.map((link) => (
+          {[...navLinks, { label: '_login', href: '/admin' }].map((link) => (
             <Typography
               key={link.label}
               component="a"
