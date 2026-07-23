@@ -22,7 +22,7 @@ type User = {
   createdAt: Date;
 };
 
-const fieldSx = (accent = '#4ade80') => ({
+const fieldSx = (accent = '#38bdf8') => ({
   '& .MuiOutlinedInput-root': {
     borderRadius: 0,
     fontFamily: 'var(--font-geist-mono), monospace',
@@ -44,7 +44,7 @@ function InlineMsg({ msg, ok }: { msg: string; ok: boolean }) {
       sx={{
         fontFamily: 'var(--font-geist-mono), monospace',
         fontSize: '0.7rem',
-        color: ok ? '#4ade80' : '#f87171',
+        color: ok ? '#38bdf8' : '#f87171',
         mt: 1,
       }}
     >
@@ -104,7 +104,7 @@ function CreateUserForm({ onCreated }: { onCreated: (u: User) => void }) {
             maxWidth: 480,
           }}
         >
-          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#4ade80', mb: 1 }}>
+          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#38bdf8', mb: 1 }}>
             // create user
           </Typography>
 
@@ -156,9 +156,9 @@ function ChangePasswordRow({ userId }: { userId: string }) {
           sx={{
             borderRadius: 0,
             border: '1px solid',
-            borderColor: open ? '#4ade80' : 'divider',
-            color: open ? '#4ade80' : 'text.secondary',
-            '&:hover': { borderColor: '#4ade80', color: '#4ade80' },
+            borderColor: open ? '#38bdf8' : 'divider',
+            color: open ? '#38bdf8' : 'text.secondary',
+            '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' },
             transition: 'all 0.15s',
           }}
         >
@@ -216,7 +216,7 @@ export default function UsersClient({ users: initial, currentUserId }: { users: 
       {/* Header */}
       <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', mb: 6, flexWrap: 'wrap', gap: 3 }}>
         <Box>
-          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#4ade80', mb: 1, letterSpacing: '0.05em' }}>
+          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#38bdf8', mb: 1, letterSpacing: '0.05em' }}>
             // user management
           </Typography>
           <Typography variant="h2" sx={{ fontSize: { xs: '1.75rem', md: '2.25rem' } }}>
@@ -250,7 +250,7 @@ export default function UsersClient({ users: initial, currentUserId }: { users: 
           {['user', 'role', 'created', ''].map((h) => (
             <Typography
               key={h}
-              sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#444', letterSpacing: '0.08em', textTransform: 'uppercase' }}
+              sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#64748b', letterSpacing: '0.08em', textTransform: 'uppercase' }}
             >
               {h}
             </Typography>
@@ -287,7 +287,7 @@ export default function UsersClient({ users: initial, currentUserId }: { users: 
                       {user.email}
                     </Typography>
                     {isMe && (
-                      <Box sx={{ px: 1, border: '1px solid #4ade8050', fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.55rem', color: '#4ade80', lineHeight: '18px' }}>
+                      <Box sx={{ px: 1, border: '1px solid #38bdf850', fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.55rem', color: '#38bdf8', lineHeight: '18px' }}>
                         you
                       </Box>
                     )}
@@ -310,7 +310,7 @@ export default function UsersClient({ users: initial, currentUserId }: { users: 
                       display: 'inline-block',
                       px: 1.5,
                       py: 0.25,
-                      border: '1px solid #333',
+                      border: '1px solid #e2e8f0',
                       fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: '0.6rem',
                       color: '#888',
@@ -323,7 +323,7 @@ export default function UsersClient({ users: initial, currentUserId }: { users: 
 
                 {/* Created */}
                 <Typography
-                  sx={{ display: { xs: 'none', md: 'block' }, fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#444' }}
+                  sx={{ display: { xs: 'none', md: 'block' }, fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#64748b' }}
                 >
                   {new Date(user.createdAt).toLocaleDateString('th-TH', { day: '2-digit', month: 'short', year: '2-digit' })}
                 </Typography>

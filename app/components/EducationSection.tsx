@@ -47,7 +47,7 @@ export default function EducationSection() {
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: { xs: '6rem', md: '14rem' },
           fontWeight: 300,
-          color: 'rgba(201,169,110,0.05)',
+          color: 'rgba(56,189,248,0.03)',
           lineHeight: 1,
           userSelect: 'none',
           pointerEvents: 'none',
@@ -61,23 +61,18 @@ export default function EducationSection() {
         {/* Section header */}
         <Box sx={{ mb: { xs: 8, md: 12 } }}>
           <Typography
-            variant="h6"
             sx={{
-              color: '#4ade80',
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: '0.7rem',
+              color: '#38bdf8',
               mb: 2,
+              letterSpacing: '0.05em',
               display: 'flex',
               alignItems: 'center',
-              gap: 2,
-              '&::before': {
-                content: '""',
-                display: 'block',
-                width: 40,
-                height: '1px',
-                backgroundColor: '#4ade80',
-              },
+              gap: 1,
             }}
           >
-            Education
+            <Box component="span" sx={{ color: '#94a3b8' }}>//</Box> 04_education
           </Typography>
           <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
             Academic Background
@@ -158,7 +153,7 @@ export default function EducationSection() {
                 borderColor: { md: 'divider' },
               }}
             >
-              <Typography variant="h6" sx={{ mb: 1, color: '#4ade80' }}>
+              <Typography variant="h6" sx={{ mb: 1, color: '#38bdf8' }}>
                 Relevant Coursework
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
@@ -190,7 +185,7 @@ export default function EducationSection() {
               <Divider sx={{ mb: 5 }} />
 
               {/* Highlights */}
-              <Typography variant="h6" sx={{ mb: 3, color: '#4ade80' }}>
+              <Typography variant="h6" sx={{ mb: 3, color: '#38bdf8' }}>
                 Highlights
               </Typography>
 
@@ -217,7 +212,7 @@ export default function EducationSection() {
                     mb: i < 2 ? 3.5 : 0,
                     pl: 3,
                     borderLeft: '2px solid',
-                    borderColor: '#4ade80',
+                    borderColor: '#38bdf8',
                   }}
                 >
                   <Typography

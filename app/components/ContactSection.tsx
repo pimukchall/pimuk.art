@@ -13,7 +13,6 @@ import Alert from '@mui/material/Alert';
 const socials = [
   { label: 'github', href: 'https://github.com/pimukchall' },
   { label: 'instagram', href: 'https://instagram.com/pimuk.muk' },
-  { label: 'linkedin', href: '#' },
 ];
 
 const fieldSx = {
@@ -21,16 +20,16 @@ const fieldSx = {
     borderRadius: 0,
     fontFamily: '"Noto Sans Thai", var(--font-geist-sans), system-ui, sans-serif',
     fontSize: '0.875rem',
-    '& fieldset': { borderColor: '#2a2a2a' },
-    '&:hover fieldset': { borderColor: '#4ade80' },
-    '&.Mui-focused fieldset': { borderColor: '#4ade80', borderWidth: '1px' },
-    '& input, & textarea': { color: '#f0f0f0' },
+    '& fieldset': { borderColor: '#e2e8f0' },
+    '&:hover fieldset': { borderColor: '#38bdf8' },
+    '&.Mui-focused fieldset': { borderColor: '#38bdf8', borderWidth: '1px' },
+    '& input, & textarea': { color: '#0f172a' },
   },
   '& .MuiInputLabel-root': {
     fontFamily: '"Noto Sans Thai", var(--font-geist-sans), system-ui, sans-serif',
     fontSize: '0.8rem',
-    color: '#555',
-    '&.Mui-focused': { color: '#4ade80' },
+    color: '#64748b',
+    '&.Mui-focused': { color: '#38bdf8' },
   },
 };
 
@@ -92,7 +91,7 @@ export default function ContactSection() {
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: { xs: '6rem', md: '14rem' },
           fontWeight: 100,
-          color: 'rgba(74,222,128,0.03)',
+          color: 'rgba(56,189,248,0.03)',
           lineHeight: 1,
           userSelect: 'none',
           pointerEvents: 'none',
@@ -111,7 +110,7 @@ export default function ContactSection() {
               sx={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.7rem',
-                color: '#4ade80',
+                color: '#38bdf8',
                 mb: 3,
                 letterSpacing: '0.05em',
                 display: 'flex',
@@ -119,7 +118,7 @@ export default function ContactSection() {
                 gap: 1,
               }}
             >
-              <Box component="span" sx={{ color: '#333' }}>//</Box> 06_contact
+              <Box component="span" sx={{ color: '#94a3b8' }}>//</Box> 06_contact
             </Typography>
 
             <Typography
@@ -127,7 +126,7 @@ export default function ContactSection() {
               sx={{ color: 'text.primary', fontSize: { xs: '2rem', md: '2.75rem' }, mb: 4 }}
             >
               Let&apos;s build something{' '}
-              <Box component="span" sx={{ color: '#4ade80' }}>
+              <Box component="span" sx={{ color: '#22c55e' }}>
                 production-grade
               </Box>{' '}
               together
@@ -141,33 +140,33 @@ export default function ContactSection() {
             {/* Meta info */}
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
               <Box>
-                <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#333', mb: 1, letterSpacing: '0.05em' }}>
+                <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#94a3b8', mb: 1, letterSpacing: '0.05em' }}>
                   // location
                 </Typography>
                 <Typography variant="body2" color="text.secondary">Nonthaburi, Thailand</Typography>
               </Box>
 
               <Box>
-                <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#333', mb: 1, letterSpacing: '0.05em' }}>
+                <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#94a3b8', mb: 1, letterSpacing: '0.05em' }}>
                   // status
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                   <Box
                     sx={{
-                      width: 6, height: 6, borderRadius: '50%', backgroundColor: '#4ade80',
-                      boxShadow: '0 0 8px #4ade80',
+                      width: 6, height: 6, borderRadius: '50%', backgroundColor: '#22c55e',
+                      boxShadow: '0 0 8px #38bdf8',
                       animation: 'pulse 2s ease-in-out infinite',
                       '@keyframes pulse': { '0%, 100%': { opacity: 1 }, '50%': { opacity: 0.4 } },
                     }}
                   />
-                  <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.75rem', color: '#4ade80' }}>
+                  <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.75rem', color: '#22c55e' }}>
                     available
                   </Typography>
                 </Box>
               </Box>
 
               <Box>
-                <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#333', mb: 2, letterSpacing: '0.05em' }}>
+                <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#94a3b8', mb: 2, letterSpacing: '0.05em' }}>
                   // links
                 </Typography>
                 <Stack spacing={1.5}>
@@ -181,16 +180,16 @@ export default function ContactSection() {
                       sx={{
                         fontFamily: 'var(--font-geist-mono), monospace',
                         fontSize: '0.75rem',
-                        color: '#444',
+                        color: '#64748b',
                         textDecoration: 'none',
                         display: 'flex',
                         alignItems: 'center',
                         gap: 1.5,
                         transition: 'color 0.2s',
-                        '&:hover': { color: '#4ade80' },
+                        '&:hover': { color: '#38bdf8' },
                       }}
                     >
-                      <Box component="span" sx={{ color: '#2a2a2a' }}>↗</Box>
+                      <Box component="span" sx={{ color: '#94a3b8' }}>↗</Box>
                       {s.label}
                     </Typography>
                   ))}
@@ -209,14 +208,14 @@ export default function ContactSection() {
               }}
             >
               <Typography
-                sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: '#4ade80', mb: 4, letterSpacing: '0.05em' }}
+                sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: '#38bdf8', mb: 4, letterSpacing: '0.05em' }}
               >
                 // send message
               </Typography>
 
               {state === 'success' ? (
                 <Box sx={{ py: 6, textAlign: 'center' }}>
-                  <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.85rem', color: '#4ade80', mb: 1 }}>
+                  <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.85rem', color: '#38bdf8', mb: 1 }}>
                     ✓ ส่งข้อความเรียบร้อยแล้ว
                   </Typography>
                   <Typography variant="body2" color="text.secondary">

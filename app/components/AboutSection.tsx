@@ -6,21 +6,6 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 
-const techStack = [
-  {
-    category: 'Frontend',
-    items: ['Next.js 15–16 (App Router)', 'Nuxt 4 / Vue 3', 'React 19 / TypeScript', 'Tailwind CSS v4 / MUI'],
-  },
-  {
-    category: 'Backend & DB',
-    items: ['Node.js / NestJS', 'Prisma ORM / Raw MySQL', 'RESTful API Design', 'JWT · RBAC · Auth'],
-  },
-  {
-    category: 'Infra & AI',
-    items: ['Vercel · Railway · PM2', 'VMware ESXi · Ubuntu', 'Microsoft Entra ID · AD', 'Claude · Gemini · Copilot'],
-  },
-];
-
 export default function AboutSection() {
   return (
     <Box
@@ -41,7 +26,7 @@ export default function AboutSection() {
               sx={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.7rem',
-                color: '#4ade80',
+                color: '#38bdf8',
                 mb: 3,
                 letterSpacing: '0.05em',
                 display: 'flex',
@@ -49,7 +34,7 @@ export default function AboutSection() {
                 gap: 1,
               }}
             >
-              <Box component="span" sx={{ color: '#333' }}>//</Box> 02_about
+              <Box component="span" sx={{ color: '#94a3b8' }}>//</Box> 02_about
             </Typography>
 
             <Typography
@@ -57,7 +42,7 @@ export default function AboutSection() {
               sx={{ fontSize: { xs: '2rem', md: '2.5rem', lg: '2.75rem' }, mb: 4, color: 'text.primary' }}
             >
               Enterprise systems,{' '}
-              <Box component="span" sx={{ color: '#4ade80' }}>
+              <Box component="span" sx={{ color: '#38bdf8' }}>
                 built to last
               </Box>
             </Typography>
@@ -99,7 +84,7 @@ export default function AboutSection() {
                   sx={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: '0.65rem',
-                    color: '#4ade80',
+                    color: '#38bdf8',
                     mt: '3px',
                     flexShrink: 0,
                   }}
@@ -136,7 +121,7 @@ export default function AboutSection() {
                 sx={{
                   fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: '0.65rem',
-                  color: '#333',
+                  color: '#94a3b8',
                   letterSpacing: '0.05em',
                 }}
               >
@@ -145,13 +130,11 @@ export default function AboutSection() {
             </Box>
           </Grid>
 
-          {/* Right: Photo + Stack */}
+          {/* Right: Photo */}
           <Grid size={{ xs: 12, md: 7 }}>
-            {/* Profile photo */}
             <Box
               sx={{
-                height: { xs: 320, md: 420 },
-                mb: 6,
+                height: { xs: 320, md: 500 },
                 position: 'relative',
                 overflow: 'hidden',
                 border: '1px solid', borderColor: 'divider',
@@ -165,7 +148,6 @@ export default function AboutSection() {
                 sizes="(max-width: 900px) 100vw, 58vw"
                 priority
               />
-              {/* Corner accents */}
               {[
                 { top: 12, left: 12 },
                 { top: 12, right: 12 },
@@ -178,16 +160,15 @@ export default function AboutSection() {
                     position: 'absolute',
                     width: 20,
                     height: 20,
-                    borderTop: i < 2 ? '1px solid #4ade80' : 'none',
-                    borderBottom: i >= 2 ? '1px solid #4ade80' : 'none',
-                    borderLeft: i % 2 === 0 ? '1px solid #4ade80' : 'none',
-                    borderRight: i % 2 === 1 ? '1px solid #4ade80' : 'none',
+                    borderTop: i < 2 ? '1px solid #38bdf8' : 'none',
+                    borderBottom: i >= 2 ? '1px solid #38bdf8' : 'none',
+                    borderLeft: i % 2 === 0 ? '1px solid #38bdf8' : 'none',
+                    borderRight: i % 2 === 1 ? '1px solid #38bdf8' : 'none',
                     zIndex: 1,
                     ...pos,
                   }}
                 />
               ))}
-              {/* Scanline overlay */}
               <Box
                 sx={{
                   position: 'absolute',
@@ -198,43 +179,6 @@ export default function AboutSection() {
                 }}
               />
             </Box>
-
-            {/* Tech stack grid */}
-            <Grid container spacing={0} sx={{ alignItems: 'flex-start' }}>
-              {techStack.map((group, i) => (
-                <Grid key={group.category} size={{ xs: 12, sm: 4 }}>
-                  <Box
-                    sx={{
-                      pl: i > 0 ? { sm: 4 } : 0,
-                      borderLeft: i > 0 ? { sm: '1px solid' } : 'none', borderLeftColor: i > 0 ? 'divider' : undefined,
-                      pb: { xs: i < techStack.length - 1 ? 4 : 0, sm: 0 },
-                      mb: { xs: i < techStack.length - 1 ? 4 : 0, sm: 0 },
-                      borderBottom: {
-                        xs: i < techStack.length - 1 ? '1px solid' : 'none',
-                        sm: 'none',
-                      },
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontFamily: 'var(--font-geist-mono), monospace',
-                        fontSize: '0.65rem',
-                        color: '#4ade80',
-                        mb: 2.5,
-                        letterSpacing: '0.05em',
-                      }}
-                    >
-                      {group.category}
-                    </Typography>
-                    {group.items.map((item) => (
-                      <Typography key={item} variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
-                        {item}
-                      </Typography>
-                    ))}
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
           </Grid>
         </Grid>
       </Container>

@@ -12,29 +12,29 @@ export default function AdminBarClient() {
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 9999,
-        backgroundColor: '#0a0a0a',
-        border: '1px solid #222',
+        backgroundColor: 'rgba(255,255,255,0.95)',
+        border: '1px solid #e2e8f0',
         px: 3,
         py: 1.25,
         display: 'flex',
         alignItems: 'center',
         gap: 3,
         backdropFilter: 'blur(12px)',
-        boxShadow: '0 4px 24px rgba(0,0,0,0.6)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
       }}
     >
       <Typography
         sx={{
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: '0.6rem',
-          color: '#4ade80',
+          color: '#38bdf8',
           letterSpacing: '0.08em',
         }}
       >
         ~/admin
       </Typography>
 
-      <Box sx={{ width: '1px', height: 12, backgroundColor: '#222' }} />
+      <Box sx={{ width: '1px', height: 12, backgroundColor: '#e2e8f0' }} />
 
       <Typography
         component="a"
@@ -42,11 +42,11 @@ export default function AdminBarClient() {
         sx={{
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: '0.6rem',
-          color: '#555',
+          color: '#64748b',
           textDecoration: 'none',
           letterSpacing: '0.05em',
           transition: 'color 0.2s',
-          '&:hover': { color: '#fff' },
+          '&:hover': { color: '#0f172a' },
         }}
       >
         contacts
@@ -58,11 +58,11 @@ export default function AdminBarClient() {
         sx={{
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: '0.6rem',
-          color: '#555',
+          color: '#64748b',
           textDecoration: 'none',
           letterSpacing: '0.05em',
           transition: 'color 0.2s',
-          '&:hover': { color: '#fff' },
+          '&:hover': { color: '#0f172a' },
         }}
       >
         projects
@@ -74,11 +74,11 @@ export default function AdminBarClient() {
         sx={{
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: '0.6rem',
-          color: '#555',
+          color: '#64748b',
           textDecoration: 'none',
           letterSpacing: '0.05em',
           transition: 'color 0.2s',
-          '&:hover': { color: '#fff' },
+          '&:hover': { color: '#0f172a' },
         }}
       >
         users

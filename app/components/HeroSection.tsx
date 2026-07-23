@@ -27,7 +27,7 @@ export default function HeroSection() {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)',
+            'linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
           pointerEvents: 'none',
         }}
@@ -56,7 +56,7 @@ export default function HeroSection() {
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: { xs: '8rem', md: '18rem' },
           fontWeight: 100,
-          color: 'rgba(74,222,128,0.04)',
+          color: 'rgba(56,189,248,0.04)',
           lineHeight: 1,
           userSelect: 'none',
           pointerEvents: 'none',
@@ -75,7 +75,7 @@ export default function HeroSection() {
                 sx={{
                   fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: '0.75rem',
-                  color: '#4ade80',
+                  color: '#38bdf8',
                   mb: { xs: 3, md: 4 },
                   display: 'flex',
                   alignItems: 'center',
@@ -83,17 +83,17 @@ export default function HeroSection() {
                   letterSpacing: '0.05em',
                 }}
               >
-                <Box component="span" sx={{ color: '#333' }}>~/</Box>
+                <Box component="span" sx={{ color: '#cbd5e1' }}>~/</Box>
                 pimuk.art
-                <Box component="span" sx={{ color: '#444' }}>$</Box>
+                <Box component="span" sx={{ color: '#94a3b8' }}>$</Box>
                 <Box
                   component="span"
                   sx={{
-                    color: '#f0f0f0',
+                    color: '#0f172a',
                     '&::after': {
                       content: '"▋"',
                       animation: 'blink 1s step-end infinite',
-                      color: '#4ade80',
+                      color: '#38bdf8',
                       ml: 0.5,
                     },
                     '@keyframes blink': {
@@ -117,7 +117,7 @@ export default function HeroSection() {
                 }}
               >
                 Full-Stack{' '}
-                <Box component="span" sx={{ color: '#4ade80' }}>
+                <Box component="span" sx={{ color: '#38bdf8' }}>
                   Dev
                 </Box>
                 {' '}+
@@ -174,9 +174,9 @@ export default function HeroSection() {
               }}
             >
               {[
-                { label: 'ERP', sub: '// zero to production' },
-                { label: 'SSO', sub: '// enterprise iam' },
-                { label: 'AI', sub: '// driven development' },
+                { label: 'ERP', num: '3+', sub: '// systems built' },
+                { label: 'SSO', num: '2+', sub: '// platforms integrated' },
+                { label: 'AI', num: '5+', sub: '// tools in production' },
               ].map((stat) => (
                 <Box
                   key={stat.label}
@@ -184,17 +184,16 @@ export default function HeroSection() {
                     mb: { xs: 0, md: 5 },
                     pl: { md: 4 },
                     pt: { xs: 2, md: 0 },
-                    borderLeft: { md: '1px solid #1e1e1e' },
-                    borderTop: { xs: '1px solid #1e1e1e', md: 'none' },
+                    borderLeft: { md: '1px solid #e2e8f0' },
+                    borderTop: { xs: '1px solid #e2e8f0', md: 'none' },
                   }}
                 >
                   <Typography
                     sx={{
                       fontFamily: 'var(--font-geist-mono), monospace',
-                      fontSize: { xs: '1.75rem', md: '2.5rem' },
-                      fontWeight: 300,
-                      color: '#4ade80',
-                      lineHeight: 1,
+                      fontSize: { xs: '0.6rem', md: '0.65rem' },
+                      color: '#64748b',
+                      letterSpacing: '0.08em',
                       mb: 0.5,
                     }}
                   >
@@ -203,8 +202,20 @@ export default function HeroSection() {
                   <Typography
                     sx={{
                       fontFamily: 'var(--font-geist-mono), monospace',
+                      fontSize: { xs: '1.75rem', md: '2.5rem' },
+                      fontWeight: 300,
+                      color: '#38bdf8',
+                      lineHeight: 1,
+                      mb: 0.5,
+                    }}
+                  >
+                    {stat.num}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: { xs: '0.5rem', md: '0.6rem' },
-                      color: '#444',
+                      color: '#64748b',
                       letterSpacing: '0.05em',
                     }}
                   >
@@ -234,7 +245,7 @@ export default function HeroSection() {
           sx={{
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '0.6rem',
-            color: '#333',
+            color: '#cbd5e1',
             letterSpacing: '0.1em',
           }}
         >
@@ -254,7 +265,7 @@ export default function HeroSection() {
               left: 0,
               width: '100%',
               height: '50%',
-              backgroundColor: '#4ade80',
+              backgroundColor: '#38bdf8',
               animation: 'scrollLine 1.5s ease-in-out infinite',
             },
             '@keyframes scrollLine': {
