@@ -64,7 +64,7 @@ export default function ServicesSection() {
               sx={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.7rem',
-                color: '#4ade80',
+                color: '#38bdf8',
                 mb: 2,
                 letterSpacing: '0.05em',
                 display: 'flex',
@@ -72,7 +72,7 @@ export default function ServicesSection() {
                 gap: 1,
               }}
             >
-              <Box component="span" sx={{ color: '#333' }}>//</Box> 05_services
+              <Box component="span" sx={{ color: '#94a3b8' }}>//</Box> 05_services
             </Typography>
             <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
               What I Do
@@ -93,7 +93,7 @@ export default function ServicesSection() {
                 flexDirection: { xs: 'column', md: 'row' },
                 gap: { xs: 3, md: 6 },
                 alignItems: { md: 'flex-start' },
-                '&:hover .service-number': { color: '#4ade80' },
+                '&:hover .service-number': { color: '#38bdf8' },
               }}
             >
               {/* Number */}
@@ -103,7 +103,7 @@ export default function ServicesSection() {
                   fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: { xs: '1rem', md: '1.25rem' },
                   fontWeight: 300,
-                  color: '#222',
+                  color: '#cbd5e1',
                   minWidth: { md: 80 },
                   transition: 'color 0.3s ease',
                   lineHeight: 1,
@@ -139,7 +139,7 @@ export default function ServicesSection() {
                           width: 4,
                           height: 4,
                           borderRadius: '50%',
-                          backgroundColor: '#4ade80',
+                          backgroundColor: '#38bdf8',
                         },
                       }}
                     >

@@ -50,7 +50,7 @@ export default function LoginPage() {
             sx={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '0.65rem',
-              color: '#4ade80',
+              color: '#38bdf8',
               mb: 2,
               letterSpacing: '0.05em',
             }}
@@ -102,13 +102,13 @@ export default function LoginPage() {
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.85rem',
                 '& fieldset': { borderColor: 'divider' },
-                '&:hover fieldset': { borderColor: '#4ade80' },
-                '&.Mui-focused fieldset': { borderColor: '#4ade80', borderWidth: '1px' },
+                '&:hover fieldset': { borderColor: '#38bdf8' },
+                '&.Mui-focused fieldset': { borderColor: '#38bdf8', borderWidth: '1px' },
               },
               '& .MuiInputLabel-root': {
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.8rem',
-                '&.Mui-focused': { color: '#4ade80' },
+                '&.Mui-focused': { color: '#38bdf8' },
               },
             }}
           />
@@ -127,13 +127,13 @@ export default function LoginPage() {
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.85rem',
                 '& fieldset': { borderColor: 'divider' },
-                '&:hover fieldset': { borderColor: '#4ade80' },
-                '&.Mui-focused fieldset': { borderColor: '#4ade80', borderWidth: '1px' },
+                '&:hover fieldset': { borderColor: '#38bdf8' },
+                '&.Mui-focused fieldset': { borderColor: '#38bdf8', borderWidth: '1px' },
               },
               '& .MuiInputLabel-root': {
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.8rem',
-                '&.Mui-focused': { color: '#4ade80' },
+                '&.Mui-focused': { color: '#38bdf8' },
               },
             }}
           />
@@ -160,7 +160,7 @@ export default function LoginPage() {
             color: 'text.secondary',
             textDecoration: 'none',
             letterSpacing: '0.05em',
-            '&:hover': { color: '#4ade80' },
+            '&:hover': { color: '#38bdf8' },
             transition: 'color 0.2s',
           }}
         >

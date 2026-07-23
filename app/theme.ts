@@ -10,22 +10,22 @@ export function buildTheme(mode: 'dark' | 'light') {
     palette: {
       mode,
       primary: {
-        main: isDark ? '#f0f0f0' : '#0a0a0a',
+        main: isDark ? '#e2f3ff' : '#0f172a',
       },
       secondary: {
-        main: '#4ade80',
-        light: '#86efac',
-        dark: '#22c55e',
+        main: '#38bdf8',
+        light: '#7dd3fc',
+        dark: '#0ea5e9',
       },
       background: {
-        default: isDark ? '#0a0a0a' : '#f5f5f5',
-        paper: isDark ? '#111111' : '#ffffff',
+        default: isDark ? '#05080f' : '#f8fafc',
+        paper: isDark ? 'rgba(14,22,38,0.8)' : '#ffffff',
       },
       text: {
-        primary: isDark ? '#f0f0f0' : '#0a0a0a',
-        secondary: isDark ? '#666666' : '#777777',
+        primary: isDark ? '#e2f3ff' : '#0f172a',
+        secondary: isDark ? '#64a5c8' : '#64748b',
       },
-      divider: isDark ? '#222222' : '#e0e0e0',
+      divider: isDark ? 'rgba(125,211,252,0.1)' : '#e2e8f0',
     },
     typography: {
       fontFamily: 'var(--font-geist-mono), "Courier New", monospace',
@@ -101,8 +101,21 @@ export function buildTheme(mode: 'dark' | 'light') {
           '*, *::before, *::after': { boxSizing: 'border-box' },
           html: { scrollBehavior: 'smooth' },
           '::selection': {
-            backgroundColor: '#4ade80',
-            color: isDark ? '#0a0a0a' : '#ffffff',
+            backgroundColor: '#38bdf8',
+            color: '#ffffff',
+          },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: isDark ? {
+            background: 'rgba(14,22,38,0.6)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(125,211,252,0.08)',
+          } : {
+            background: '#ffffff',
+            border: '1px solid #e2e8f0',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
           },
         },
       },
@@ -117,19 +130,19 @@ export function buildTheme(mode: 'dark' | 'light') {
             '&:hover': { boxShadow: 'none' },
           },
           contained: {
-            backgroundColor: '#4ade80',
-            color: '#0a0a0a',
-            '&:hover': { backgroundColor: '#86efac' },
+            backgroundColor: '#38bdf8',
+            color: '#ffffff',
+            '&:hover': { backgroundColor: '#0ea5e9' },
           },
           outlined: {
-            borderColor: isDark ? '#333333' : '#cccccc',
-            color: isDark ? '#f0f0f0' : '#0a0a0a',
+            borderColor: isDark ? 'rgba(125,211,252,0.2)' : '#e2e8f0',
+            color: isDark ? '#e2f3ff' : '#0f172a',
             borderWidth: '1px',
             '&:hover': {
               borderWidth: '1px',
               backgroundColor: 'transparent',
-              borderColor: '#4ade80',
-              color: '#4ade80',
+              borderColor: '#38bdf8',
+              color: '#38bdf8',
             },
           },
         },
@@ -143,15 +156,15 @@ export function buildTheme(mode: 'dark' | 'light') {
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
             fontWeight: 400,
-            backgroundColor: isDark ? '#1a1a1a' : '#ebebeb',
-            color: isDark ? '#666666' : '#888888',
-            border: `1px solid ${isDark ? '#222' : '#ddd'}`,
+            backgroundColor: isDark ? 'rgba(125,211,252,0.06)' : '#f1f5f9',
+            color: isDark ? '#64a5c8' : '#64748b',
+            border: `1px solid ${isDark ? 'rgba(125,211,252,0.15)' : '#e2e8f0'}`,
           },
         },
       },
       MuiDivider: {
         styleOverrides: {
-          root: { borderColor: isDark ? '#222222' : '#e0e0e0' },
+          root: { borderColor: isDark ? 'rgba(125,211,252,0.1)' : '#e2e8f0' },
         },
       },
     },

@@ -30,7 +30,7 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
       <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', mb: 6, flexWrap: 'wrap', gap: 2 }}>
         <Box>
           <Typography
-            sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#4ade80', mb: 1, letterSpacing: '0.05em' }}
+            sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#38bdf8', mb: 1, letterSpacing: '0.05em' }}
           >
             // contact submissions
           </Typography>
@@ -47,11 +47,11 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
               sx={{
                 px: 1.5,
                 py: 0.5,
-                backgroundColor: '#4ade8020',
-                border: '1px solid #4ade80',
+                backgroundColor: '#38bdf820',
+                border: '1px solid #38bdf8',
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '0.65rem',
-                color: '#4ade80',
+                color: '#38bdf8',
               }}
             >
               {unread} unread
@@ -89,7 +89,7 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
               {/* Unread dot */}
               <Box sx={{ mt: '6px', flexShrink: 0, width: 6, height: 6 }}>
                 {!contact.read && (
-                  <Box sx={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#4ade80', boxShadow: '0 0 6px #4ade80' }} />
+                  <Box sx={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#38bdf8', boxShadow: '0 0 6px #38bdf8' }} />
                 )}
               </Box>
 
@@ -102,7 +102,7 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
                   <Typography
                     component="a"
                     href={`mailto:${contact.email}`}
-                    sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: '#4ade80', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                    sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: '#38bdf8', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                   >
                     {contact.email}
                   </Typography>
@@ -131,7 +131,7 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
                       borderRadius: 0,
                       border: '1px solid',
                       borderColor: 'divider',
-                      '&:hover': { borderColor: '#4ade80', color: '#4ade80' },
+                      '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' },
                       transition: 'all 0.15s',
                       flexShrink: 0,
                     }}

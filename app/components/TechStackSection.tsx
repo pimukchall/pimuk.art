@@ -110,23 +110,18 @@ export default function TechStackSection() {
         {/* Header */}
         <Box sx={{ mb: { xs: 8, md: 12 } }}>
           <Typography
-            variant="h6"
             sx={{
-              color: '#4ade80',
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: '0.7rem',
+              color: '#38bdf8',
               mb: 2,
+              letterSpacing: '0.05em',
               display: 'flex',
               alignItems: 'center',
-              gap: 2,
-              '&::before': {
-                content: '""',
-                display: 'block',
-                width: 40,
-                height: '1px',
-                backgroundColor: '#4ade80',
-              },
+              gap: 1,
             }}
           >
-            Stack & Capabilities
+            <Box component="span" sx={{ color: '#94a3b8' }}>//</Box> 03_stack
           </Typography>
           <Box
             sx={{
@@ -139,7 +134,7 @@ export default function TechStackSection() {
           >
             <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
               Technology &{' '}
-              <Box component="span" sx={{ fontStyle: 'italic', color: '#4ade80' }}>
+              <Box component="span" sx={{ fontStyle: 'italic', color: '#38bdf8' }}>
                 Expertise
               </Box>
             </Typography>
@@ -164,7 +159,7 @@ export default function TechStackSection() {
               >
                 <Typography
                   variant="h6"
-                  sx={{ mb: 3, color: '#4ade80', fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}
+                  sx={{ mb: 3, color: '#38bdf8', fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}
                 >
                   {cat.label}
                 </Typography>
@@ -210,7 +205,7 @@ export default function TechStackSection() {
                     flexDirection: { xs: 'column', md: 'row' },
                     gap: { xs: 2, md: 8 },
                     alignItems: { md: 'flex-start' },
-                    '&:hover .cap-index': { color: '#4ade80' },
+                    '&:hover .cap-index': { color: '#38bdf8' },
                   }}
                 >
                   <Typography

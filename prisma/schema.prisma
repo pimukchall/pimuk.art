@@ -27,6 +27,57 @@ model Contact {
   createdAt DateTime @default(now())
 }
 
+model Project {
+  id           String   @id @default(cuid())
+  title        String
+  url          String?
+  category     String
+  type         String
+  year         String
+  accent       String   @default("#4ade80")
+  deployLabel  String
+  deployDetail String
+  description  String   @db.Text
+  stack        Json
+  modules      Json
+  imageUrl     String?
+  images       Json    @default("[]")
+  order        Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Game {
+  id            String   @id @default(cuid())
+  title         String
+  coverUrl      String?
+  platform      String   @default("")
+  genre         String   @default("")
+  status        String   @default("backlog")
+  rating        Int?
+  hoursPlayed   Float?
+  completedYear Int?
+  notes         String?  @db.Text
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  dlcs          Dlc[]
+}
+
+model Dlc {
+  id            String   @id @default(cuid())
+  gameId        String
+  game          Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  name          String
+  status        String   @default("not_owned")
+  completedYear Int?
+  notes         String?  @db.Text
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
 enum Role {
   ADMIN
 }

@@ -30,7 +30,7 @@ export default function Footer() {
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '0.7rem',
               letterSpacing: '0.05em',
-              color: '#333',
+              color: '#64748b',
             }}
           >
             ~/pimuk.art
@@ -40,7 +40,7 @@ export default function Footer() {
             sx={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '0.65rem',
-              color: '#2a2a2a',
+              color: '#64748b',
             }}
           >
             © {new Date().getFullYear()} Pimuk Artharnnarong
@@ -50,11 +50,13 @@ export default function Footer() {
             sx={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '0.65rem',
-              color: '#2a2a2a',
+              color: '#64748b',
             }}
           >
             Nonthaburi, TH
           </Typography>
+
+
         </Box>
       </Container>
     </Box>
