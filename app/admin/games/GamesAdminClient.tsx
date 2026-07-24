@@ -235,7 +235,7 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
           <Typography variant="h4" sx={{ fontWeight: 300 }}>Games</Typography>
         </Box>
         <Button startIcon={<AddIcon />} variant="outlined" size="small" onClick={openCreate}
-          sx={{ borderColor: '#e2e8f0', color: '#0f172a', '&:hover': { borderColor: '#38bdf8' } }}>
+          sx={{ borderColor: 'divider', color: 'text.primary', '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' } }}>
           Add Game
         </Button>
       </Box>
@@ -247,8 +247,8 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
               // eslint-disable-next-line @next/next/no-img-element
               <img src={g.coverUrl} alt={g.title} style={{ width: 56, height: 75, objectFit: 'cover', flexShrink: 0, borderRadius: 2 }} />
             ) : (
-              <Box sx={{ width: 56, height: 75, backgroundColor: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <ImageIcon sx={{ color: '#94a3b8' }} />
+              <Box sx={{ width: 56, height: 75, backgroundColor: 'action.hover', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <ImageIcon sx={{ color: 'text.disabled' }} />
               </Box>
             )}
             <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -256,32 +256,32 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
                 <Typography variant="body1" sx={{ fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{g.title}</Typography>
                 <Chip label={g.status} size="small" sx={{ height: 18, fontSize: '0.6rem', color: STATUS_COLOR[g.status] ?? '#888', backgroundColor: `${STATUS_COLOR[g.status] ?? '#888'}18`, border: `1px solid ${STATUS_COLOR[g.status] ?? '#888'}44` }} />
               </Box>
-              <Typography variant="caption" sx={{ color: '#64748b', fontFamily: 'monospace' }}>
+              <Typography variant="caption" color="text.secondary" sx={{ fontFamily: 'monospace' }}>
                 {[g.platform, g.genre, g.rating != null && `★ ${g.rating}/10`, `order: ${g.order}`].filter(Boolean).join(' · ')}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', gap: 0.5 }}>
-              <IconButton size="small" onClick={() => openEdit(g)} sx={{ color: '#64748b', '&:hover': { color: '#0f172a' } }}>
+              <IconButton size="small" onClick={() => openEdit(g)} sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}>
                 <EditIcon fontSize="small" />
               </IconButton>
-              <IconButton size="small" onClick={() => handleDelete(g.id)} sx={{ color: '#64748b', '&:hover': { color: '#f87171' } }}>
+              <IconButton size="small" onClick={() => handleDelete(g.id)} sx={{ color: 'text.secondary', '&:hover': { color: '#f87171' } }}>
                 <DeleteIcon fontSize="small" />
               </IconButton>
             </Box>
           </Box>
         ))}
         {games.length === 0 && (
-          <Typography variant="body2" sx={{ color: '#94a3b8', py: 8, textAlign: 'center' }}>
+          <Typography variant="body2" color="text.disabled" sx={{ py: 8, textAlign: 'center' }}>
             ยังไม่มีเกม — กด Add Game เพื่อเริ่ม
           </Typography>
         )}
       </Box>
 
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth
-        slotProps={{ paper: { sx: { backgroundColor: '#ffffff', border: '1px solid #e2e8f0' } } }}>
+        slotProps={{ paper: { sx: { backgroundColor: 'background.paper', border: '1px solid', borderColor: 'divider' } } }}>
         <DialogTitle sx={{ fontWeight: 300, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           {editing ? 'Edit Game' : 'Add Game'}
-          <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: '#64748b' }}>
+          <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </DialogTitle>
@@ -295,9 +295,9 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
                 onClick={() => fileRef.current?.click()}
                 sx={{
                   width: 80, height: 107, flexShrink: 0,
-                  border: '1px dashed #e2e8f0', borderRadius: 1, cursor: 'pointer', overflow: 'hidden',
+                  border: '1px dashed', borderColor: 'divider', borderRadius: 1, cursor: 'pointer', overflow: 'hidden',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  backgroundColor: '#f8fafc',
+                  backgroundColor: 'background.default',
                   '&:hover': { borderColor: '#38bdf8' },
                   transition: 'border-color 0.15s',
                 }}
@@ -309,8 +309,8 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
                   <CircularProgress size={18} />
                 ) : (
                   <Box sx={{ textAlign: 'center' }}>
-                    <ImageIcon sx={{ color: '#94a3b8', fontSize: 20 }} />
-                    <Typography sx={{ fontSize: '0.55rem', color: '#94a3b8', mt: 0.5 }}>Cover</Typography>
+                    <ImageIcon sx={{ color: 'text.disabled', fontSize: 20 }} />
+                    <Typography sx={{ fontSize: '0.55rem', color: 'text.disabled', mt: 0.5 }}>Cover</Typography>
                   </Box>
                 )}
               </Box>
@@ -340,14 +340,14 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
 
           <TextField label="Notes" value={form.notes} onChange={(e) => f('notes', e.target.value)} size="small" multiline rows={3} />
 
-          <Divider sx={{ borderColor: '#e2e8f0' }} />
+          <Divider />
 
           {/* DLC section */}
           <Box>
-            <Typography variant="caption" sx={{ color: '#64748b', letterSpacing: '0.08em', display: 'block', mb: 1.5 }}>DLC</Typography>
+            <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: '0.08em', display: 'block', mb: 1.5 }}>DLC</Typography>
 
             {!editing ? (
-              <Typography sx={{ fontSize: '0.72rem', color: '#94a3b8', fontFamily: 'monospace' }}>
+              <Typography sx={{ fontSize: '0.72rem', color: 'text.disabled', fontFamily: 'monospace' }}>
                 บันทึกเกมก่อน แล้วค่อยเพิ่ม DLC
               </Typography>
             ) : (
@@ -376,13 +376,13 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
                           <MenuItem value="completed">Completed</MenuItem>
                         </Select>
                       </FormControl>
-                      <IconButton size="small" onClick={() => deleteDlc(dlc)} sx={{ color: '#94a3b8', '&:hover': { color: '#f87171' }, flexShrink: 0 }}>
+                      <IconButton size="small" onClick={() => deleteDlc(dlc)} sx={{ color: 'text.disabled', '&:hover': { color: '#f87171' }, flexShrink: 0 }}>
                         <DeleteIcon sx={{ fontSize: 16 }} />
                       </IconButton>
                     </Box>
                   ))}
                   {dlcs.length === 0 && (
-                    <Typography sx={{ fontSize: '0.7rem', color: '#94a3b8' }}>ยังไม่มี DLC</Typography>
+                    <Typography sx={{ fontSize: '0.7rem', color: 'text.disabled' }}>ยังไม่มี DLC</Typography>
                   )}
                 </Box>
 
@@ -408,7 +408,7 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
                     </Select>
                   </FormControl>
                   <IconButton size="small" onClick={addDlc} disabled={dlcSaving || !dlcInput.name.trim()}
-                    sx={{ border: '1px solid #e2e8f0', borderRadius: 0, color: '#64748b', '&:hover': { color: '#38bdf8', borderColor: '#38bdf8' }, flexShrink: 0 }}>
+                    sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 0, color: 'text.secondary', '&:hover': { color: '#38bdf8', borderColor: '#38bdf8' }, flexShrink: 0 }}>
                     {dlcSaving ? <CircularProgress size={14} /> : <AddIcon fontSize="small" />}
                   </IconButton>
                 </Box>
@@ -418,7 +418,7 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
         </DialogContent>
 
         <DialogActions sx={{ px: 3, pb: 3, gap: 1 }}>
-          <Button onClick={() => setOpen(false)} sx={{ color: '#64748b' }}>ยกเลิก</Button>
+          <Button onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>ยกเลิก</Button>
           <Button onClick={handleSave} variant="contained" disabled={saving || !form.title}
             sx={{ backgroundColor: '#38bdf8', color: '#fff', '&:hover': { backgroundColor: '#0ea5e9' }, minWidth: 100 }}>
             {saving ? <CircularProgress size={18} /> : 'บันทึก'}

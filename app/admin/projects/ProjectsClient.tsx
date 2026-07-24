@@ -254,7 +254,7 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
           <Typography variant="h4" sx={{ fontWeight: 300 }}>Projects</Typography>
         </Box>
         <Button startIcon={<AddIcon />} variant="outlined" size="small" onClick={openCreate}
-          sx={{ borderColor: '#e2e8f0', color: '#0f172a', '&:hover': { borderColor: '#38bdf8' } }}>
+          sx={{ borderColor: 'divider', color: 'text.primary', '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' } }}>
           Add Project
         </Button>
       </Box>
@@ -266,42 +266,42 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
               // eslint-disable-next-line @next/next/no-img-element
               <img src={p.imageUrl} alt={p.title} style={{ width: 80, height: 56, objectFit: 'cover', flexShrink: 0 }} />
             ) : (
-              <Box sx={{ width: 80, height: 56, backgroundColor: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <ImageIcon sx={{ color: '#94a3b8' }} />
+              <Box sx={{ width: 80, height: 56, backgroundColor: 'action.hover', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <ImageIcon sx={{ color: 'text.disabled' }} />
               </Box>
             )}
             <Box sx={{ flex: 1, minWidth: 0 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 0.5 }}>
                 <Box sx={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: p.accent, flexShrink: 0 }} />
                 <Typography variant="body1" sx={{ fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.title}</Typography>
-                {!p.published && <Chip label="hidden" size="small" sx={{ height: 18, fontSize: '0.6rem', color: '#94a3b8' }} />}
+                {!p.published && <Chip label="hidden" size="small" sx={{ height: 18, fontSize: '0.6rem', color: 'text.disabled' }} />}
               </Box>
-              <Typography variant="caption" sx={{ color: '#64748b', fontFamily: 'monospace' }}>
+              <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: 'monospace' }}>
                 {p.category} · {p.year} · order: {p.order}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', gap: 0.5 }}>
-              <IconButton size="small" onClick={() => openEdit(p)} sx={{ color: '#64748b', '&:hover': { color: '#0f172a' } }}>
+              <IconButton size="small" onClick={() => openEdit(p)} sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}>
                 <EditIcon fontSize="small" />
               </IconButton>
-              <IconButton size="small" onClick={() => handleDelete(p.id)} sx={{ color: '#64748b', '&:hover': { color: '#f87171' } }}>
+              <IconButton size="small" onClick={() => handleDelete(p.id)} sx={{ color: 'text.secondary', '&:hover': { color: '#f87171' } }}>
                 <DeleteIcon fontSize="small" />
               </IconButton>
             </Box>
           </Box>
         ))}
         {projects.length === 0 && (
-          <Typography variant="body2" sx={{ color: '#94a3b8', py: 8, textAlign: 'center' }}>
+          <Typography variant="body2" sx={{ color: 'text.disabled', py: 8, textAlign: 'center' }}>
             ยังไม่มี project — กด Add Project เพื่อเริ่ม
           </Typography>
         )}
       </Box>
 
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="md" fullWidth
-        slotProps={{ paper: { sx: { backgroundColor: '#ffffff', border: '1px solid #e2e8f0' } } }}>
+        slotProps={{ paper: { sx: { backgroundColor: 'background.paper', border: '1px solid', borderColor: 'divider' } } }}>
         <DialogTitle sx={{ fontWeight: 300, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           {editing ? 'Edit Project' : 'Add Project'}
-          <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: '#64748b' }}>
+          <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </DialogTitle>
@@ -312,12 +312,12 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
           <Box>
             <input ref={multiFileRef} type="file" accept="image/*" multiple style={{ display: 'none' }} onChange={handleUpload} />
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
-              <Typography variant="caption" sx={{ color: '#64748b', letterSpacing: '0.08em' }}>
+              <Typography variant="caption" sx={{ color: 'text.secondary', letterSpacing: '0.08em' }}>
                 รูปภาพ {form.images.length > 0 && `(${form.images.length} รูป · รูปแรกเป็น cover)`}
               </Typography>
               <Button size="small" startIcon={uploading ? <CircularProgress size={12} /> : <AddIcon />}
                 onClick={() => multiFileRef.current?.click()} disabled={uploading}
-                sx={{ color: '#64748b', fontSize: '0.65rem', '&:hover': { color: '#0f172a' } }}>
+                sx={{ color: 'text.secondary', fontSize: '0.65rem', '&:hover': { color: 'text.primary' } }}>
                 {uploading ? 'Uploading…' : 'เพิ่มรูป'}
               </Button>
             </Box>
@@ -355,17 +355,17 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
 
               {form.images.length === 0 && (
                 <Box onClick={() => multiFileRef.current?.click()}
-                  sx={{ width: 100, height: 70, border: '1px dashed #e2e8f0', display: 'flex', flexDirection: 'column',
+                  sx={{ width: 100, height: 70, border: '1px dashed', borderColor: 'divider', display: 'flex', flexDirection: 'column',
                     alignItems: 'center', justifyContent: 'center', cursor: 'pointer', gap: 0.5,
                     '&:hover': { borderColor: '#38bdf8' } }}>
-                  <ImageIcon sx={{ color: '#94a3b8', fontSize: 20 }} />
-                  <Typography sx={{ fontSize: '0.6rem', color: '#94a3b8' }}>คลิกเพิ่มรูป</Typography>
+                  <ImageIcon sx={{ color: 'text.disabled', fontSize: 20 }} />
+                  <Typography sx={{ fontSize: '0.6rem', color: 'text.disabled' }}>คลิกเพิ่มรูป</Typography>
                 </Box>
               )}
             </Box>
           </Box>
 
-          <Divider sx={{ borderColor: '#e2e8f0' }} />
+          <Divider />
 
           {/* ── Basic info ── */}
           <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
@@ -381,7 +381,7 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
 
           {/* ── Accent color ── */}
           <Box>
-            <Typography variant="caption" sx={{ color: '#64748b', display: 'block', mb: 1 }}>Accent Color</Typography>
+            <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>Accent Color</Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
               {ACCENT_COLORS.map((c) => (
                 <Box key={c} onClick={() => f('accent', c)}
@@ -397,21 +397,21 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
           <TextField label="คำอธิบาย *" value={form.description} onChange={(e) => f('description', e.target.value)}
             size="small" multiline rows={3} />
 
-          <Divider sx={{ borderColor: '#e2e8f0' }} />
+          <Divider />
 
           {/* ── Tech Stack ── */}
           <Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-              <Typography variant="caption" sx={{ color: '#64748b', letterSpacing: '0.08em' }}>TECH STACK</Typography>
+              <Typography variant="caption" sx={{ color: 'text.secondary', letterSpacing: '0.08em' }}>TECH STACK</Typography>
               <Button size="small" startIcon={<AddIcon />} onClick={addStackGroup}
-                sx={{ color: '#64748b', fontSize: '0.65rem', '&:hover': { color: '#0f172a' } }}>
+                sx={{ color: 'text.secondary', fontSize: '0.65rem', '&:hover': { color: 'text.primary' } }}>
                 เพิ่ม Group
               </Button>
             </Box>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {form.stack.map((group, gi) => (
-                <Box key={gi} sx={{ border: '1px solid #e2e8f0', p: 2 }}>
+                <Box key={gi} sx={{ border: '1px solid', borderColor: 'divider', p: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
                     <TextField
                       value={group.group}
@@ -420,7 +420,7 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
                       sx={{ flex: 1 }}
                       slotProps={{ htmlInput: { style: { fontSize: '0.8rem' } } }}
                     />
-                    <IconButton size="small" onClick={() => removeStackGroup(gi)} sx={{ color: '#94a3b8', '&:hover': { color: '#f87171' } }}>
+                    <IconButton size="small" onClick={() => removeStackGroup(gi)} sx={{ color: 'text.disabled', '&:hover': { color: '#f87171' } }}>
                       <CloseIcon fontSize="small" />
                     </IconButton>
                   </Box>
@@ -428,10 +428,10 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mb: 1.5, minHeight: 28 }}>
                     {group.items.map((item, ii) => (
                       <Chip key={ii} label={item} size="small" onDelete={() => removeStackItem(gi, ii)}
-                        sx={{ height: 24, fontSize: '0.72rem', backgroundColor: '#f1f5f9', color: '#64748b', border: '1px solid #e2e8f0' }} />
+                        sx={{ height: 24, fontSize: '0.72rem', backgroundColor: 'action.hover', color: 'text.secondary', border: '1px solid', borderColor: 'divider' }} />
                     ))}
                     {group.items.length === 0 && (
-                      <Typography sx={{ fontSize: '0.7rem', color: '#94a3b8', alignSelf: 'center' }}>ยังไม่มี item</Typography>
+                      <Typography sx={{ fontSize: '0.7rem', color: 'text.disabled', alignSelf: 'center' }}>ยังไม่มี item</Typography>
                     )}
                   </Box>
 
@@ -445,7 +445,7 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
                       slotProps={{ htmlInput: { style: { fontSize: '0.78rem' } } }}
                     />
                     <IconButton size="small" onClick={() => addStackItem(gi)}
-                      sx={{ border: '1px solid #e2e8f0', borderRadius: 0, color: '#64748b', '&:hover': { color: '#38bdf8', borderColor: '#38bdf8' } }}>
+                      sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 0, color: 'text.secondary', '&:hover': { color: '#38bdf8', borderColor: '#38bdf8' } }}>
                       <AddIcon fontSize="small" />
                     </IconButton>
                   </Box>
@@ -454,18 +454,18 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
             </Box>
           </Box>
 
-          <Divider sx={{ borderColor: '#e2e8f0' }} />
+          <Divider />
 
           {/* ── Modules ── */}
           <Box>
-            <Typography variant="caption" sx={{ color: '#64748b', letterSpacing: '0.08em', display: 'block', mb: 1.5 }}>MODULES / FEATURES</Typography>
+            <Typography variant="caption" sx={{ color: 'text.secondary', letterSpacing: '0.08em', display: 'block', mb: 1.5 }}>MODULES / FEATURES</Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mb: 1.5, minHeight: 32 }}>
               {form.modules.map((mod) => (
                 <Chip key={mod} label={mod} size="small" onDelete={() => removeModule(mod)}
-                  sx={{ height: 26, fontSize: '0.72rem', backgroundColor: '#f1f5f9', color: '#64748b', border: '1px solid #e2e8f0' }} />
+                  sx={{ height: 26, fontSize: '0.72rem', backgroundColor: 'action.hover', color: 'text.secondary', border: '1px solid', borderColor: 'divider' }} />
               ))}
               {form.modules.length === 0 && (
-                <Typography sx={{ fontSize: '0.7rem', color: '#94a3b8', alignSelf: 'center' }}>ยังไม่มี module</Typography>
+                <Typography sx={{ fontSize: '0.7rem', color: 'text.disabled', alignSelf: 'center' }}>ยังไม่มี module</Typography>
               )}
             </Box>
             <Box sx={{ display: 'flex', gap: 1 }}>
@@ -478,13 +478,13 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
                 slotProps={{ htmlInput: { style: { fontSize: '0.78rem' } } }}
               />
               <IconButton size="small" onClick={addModule}
-                sx={{ border: '1px solid #e2e8f0', borderRadius: 0, color: '#64748b', '&:hover': { color: '#38bdf8', borderColor: '#38bdf8' } }}>
+                sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 0, color: 'text.secondary', '&:hover': { color: '#38bdf8', borderColor: '#38bdf8' } }}>
                 <AddIcon fontSize="small" />
               </IconButton>
             </Box>
           </Box>
 
-          <Divider sx={{ borderColor: '#e2e8f0' }} />
+          <Divider />
 
           <FormControlLabel label="เผยแพร่ (Published)" control={
             <Switch checked={form.published} onChange={(e) => f('published', e.target.checked)} size="small" />
@@ -492,7 +492,7 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
         </DialogContent>
 
         <DialogActions sx={{ px: 3, pb: 3, gap: 1 }}>
-          <Button onClick={() => setOpen(false)} sx={{ color: '#64748b' }}>ยกเลิก</Button>
+          <Button onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>ยกเลิก</Button>
           <Button onClick={handleSave} variant="contained" disabled={saving || !form.title}
             sx={{ backgroundColor: '#38bdf8', color: '#fff', '&:hover': { backgroundColor: '#0ea5e9' }, minWidth: 100 }}>
             {saving ? <CircularProgress size={18} /> : 'บันทึก'}
