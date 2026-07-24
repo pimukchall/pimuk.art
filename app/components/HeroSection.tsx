@@ -83,13 +83,13 @@ export default function HeroSection() {
                   letterSpacing: '0.05em',
                 }}
               >
-                <Box component="span" sx={{ color: '#cbd5e1' }}>~/</Box>
+                <Box component="span" sx={{ color: 'text.secondary' }}>~/</Box>
                 pimuk.art
                 <Box component="span" sx={{ color: '#94a3b8' }}>$</Box>
                 <Box
                   component="span"
                   sx={{
-                    color: '#0f172a',
+                    color: 'text.primary',
                     '&::after': {
                       content: '"▋"',
                       animation: 'blink 1s step-end infinite',
@@ -184,8 +184,10 @@ export default function HeroSection() {
                     mb: { xs: 0, md: 5 },
                     pl: { md: 4 },
                     pt: { xs: 2, md: 0 },
-                    borderLeft: { md: '1px solid #e2e8f0' },
-                    borderTop: { xs: '1px solid #e2e8f0', md: 'none' },
+                    borderLeft: { md: '1px solid' },
+                    borderLeftColor: { md: 'divider' },
+                    borderTop: { xs: '1px solid', md: 'none' },
+                    borderTopColor: { xs: 'divider' },
                   }}
                 >
                   <Typography
@@ -245,7 +247,7 @@ export default function HeroSection() {
           sx={{
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '0.6rem',
-            color: '#cbd5e1',
+            color: 'text.secondary',
             letterSpacing: '0.1em',
           }}
         >

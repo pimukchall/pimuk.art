@@ -20,15 +20,15 @@ const fieldSx = {
     borderRadius: 0,
     fontFamily: '"Noto Sans Thai", var(--font-geist-sans), system-ui, sans-serif',
     fontSize: '0.875rem',
-    '& fieldset': { borderColor: '#e2e8f0' },
+    '& fieldset': { borderColor: 'divider' },
     '&:hover fieldset': { borderColor: '#38bdf8' },
     '&.Mui-focused fieldset': { borderColor: '#38bdf8', borderWidth: '1px' },
-    '& input, & textarea': { color: '#0f172a' },
+    '& input, & textarea': { color: 'inherit' },
   },
   '& .MuiInputLabel-root': {
     fontFamily: '"Noto Sans Thai", var(--font-geist-sans), system-ui, sans-serif',
     fontSize: '0.8rem',
-    color: '#64748b',
+    color: 'text.secondary',
     '&.Mui-focused': { color: '#38bdf8' },
   },
 };

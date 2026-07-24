@@ -327,7 +327,7 @@ export default function GamesClient({ games }: { games: Game[] }) {
         <Box sx={{ display: 'flex', gap: 1, mb: 5, flexWrap: 'wrap' }}>
           {FILTERS.map((f) => {
             const active = filter === f.key;
-            const color = f.key === 'all' ? '#fff' : STATUS_COLOR[f.key];
+            const color = STATUS_COLOR[f.key] ?? '#38bdf8';
             return (
               <Box
                 key={f.key}
@@ -337,20 +337,20 @@ export default function GamesClient({ games }: { games: Game[] }) {
                   py: 0.75,
                   borderRadius: '100px',
                   border: '1px solid',
-                  borderColor: active ? (f.key === 'all' ? '#0f172a33' : `${color}66`) : '#e2e8f0',
-                  backgroundColor: active ? (f.key === 'all' ? '#0f172a11' : `${color}18`) : 'transparent',
+                  borderColor: active ? `${color}66` : 'divider',
+                  backgroundColor: active ? `${color}18` : 'transparent',
                   cursor: 'pointer',
                   transition: 'all 0.15s',
                   display: 'flex',
                   alignItems: 'center',
                   gap: 1,
-                  '&:hover': { borderColor: f.key === 'all' ? '#fff5' : `${color}88` },
+                  '&:hover': { borderColor: `${color}88` },
                 }}
               >
-                <Typography sx={{ fontSize: '0.72rem', color: active ? (f.key === 'all' ? '#0f172a' : color) : '#64748b', fontFamily: 'monospace', transition: 'color 0.15s' }}>
+                <Typography sx={{ fontSize: '0.72rem', color: active ? color : 'text.secondary', fontFamily: 'monospace', transition: 'color 0.15s' }}>
                   {f.label}
                 </Typography>
-                <Typography sx={{ fontSize: '0.62rem', color: active ? (f.key === 'all' ? '#64748b' : `${color}bb`) : '#94a3b8', fontFamily: 'monospace' }}>
+                <Typography sx={{ fontSize: '0.62rem', color: active ? `${color}bb` : 'text.disabled', fontFamily: 'monospace' }}>
                   {counts[f.key]}
                 </Typography>
               </Box>

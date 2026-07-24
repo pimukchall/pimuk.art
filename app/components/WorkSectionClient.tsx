@@ -166,7 +166,7 @@ export default function WorkSectionClient({ projects }: { projects: Project[] })
                         </Typography>
 
                         <Box sx={{ textAlign: { xs: 'right', md: 'center' }, flex: 1, position: 'relative' }}>
-                          <Box sx={{ px: 2, py: 0.75, border: '1px solid #e2e8f0', display: 'inline-block', mb: 1 }}>
+                          <Box sx={{ px: 2, py: 0.75, border: '1px solid', borderColor: 'divider', display: 'inline-block', mb: 1 }}>
                             <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: project.accent, display: 'block', letterSpacing: '0.08em' }}>
                               {project.deployLabel}
                             </Typography>
@@ -275,8 +275,9 @@ export default function WorkSectionClient({ projects }: { projects: Project[] })
         slotProps={{
           paper: {
             sx: {
-              backgroundColor: '#ffffff',
-              border: '1px solid #e2e8f0',
+              backgroundColor: 'background.paper',
+              border: '1px solid',
+              borderColor: 'divider',
               borderRadius: 0,
               maxHeight: '90vh',
             },
@@ -373,14 +374,14 @@ export default function WorkSectionClient({ projects }: { projects: Project[] })
                   )}
                 </Box>
 
-                <Divider sx={{ borderColor: '#e2e8f0', mb: 3 }} />
+                <Divider sx={{ borderColor: 'divider', mb: 3 }} />
 
                 {/* Description */}
                 <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.9, mb: 3 }}>
                   {selected.description}
                 </Typography>
 
-                <Divider sx={{ borderColor: '#e2e8f0', mb: 3 }} />
+                <Divider sx={{ borderColor: 'divider', mb: 3 }} />
 
                 {/* Stack */}
                 <Grid container spacing={0} sx={{ mb: 3 }}>
@@ -388,10 +389,12 @@ export default function WorkSectionClient({ projects }: { projects: Project[] })
                     <Grid key={s.group} size={{ xs: 12, sm: 4 }}>
                       <Box sx={{
                         pl: i > 0 ? { sm: 3 } : 0,
-                        borderLeft: i > 0 ? { sm: '1px solid #e2e8f0' } : 'none',
+                        borderLeft: i > 0 ? { sm: '1px solid' } : 'none',
+                        borderLeftColor: i > 0 ? { sm: 'divider' } : undefined,
                         pb: { xs: i < stack.length - 1 ? 3 : 0, sm: 0 },
                         mb: { xs: i < stack.length - 1 ? 3 : 0, sm: 0 },
-                        borderBottom: { xs: i < stack.length - 1 ? '1px solid #e2e8f0' : 'none', sm: 'none' },
+                        borderBottom: { xs: i < stack.length - 1 ? '1px solid' : 'none', sm: 'none' },
+                        borderBottomColor: { xs: 'divider' },
                       }}>
                         <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: selected.accent, display: 'block', mb: 1.5, letterSpacing: '0.05em' }}>
                           {s.group}
@@ -406,7 +409,7 @@ export default function WorkSectionClient({ projects }: { projects: Project[] })
                   ))}
                 </Grid>
 
-                <Divider sx={{ borderColor: '#e2e8f0', mb: 3 }} />
+                <Divider sx={{ borderColor: 'divider', mb: 3 }} />
 
                 {/* Modules */}
                 <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.6rem', color: '#64748b', display: 'block', mb: 1.5, letterSpacing: '0.05em' }}>
@@ -415,7 +418,7 @@ export default function WorkSectionClient({ projects }: { projects: Project[] })
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                   {modules.map((mod) => (
                     <Chip key={mod} label={mod} size="small"
-                      sx={{ height: 24, fontSize: '0.62rem', color: '#64748b', border: '1px solid #e2e8f0', '&:hover': { borderColor: selected.accent + '60', color: selected.accent }, transition: 'all 0.2s' }} />
+                      sx={{ height: 24, fontSize: '0.62rem', color: 'text.secondary', border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: selected.accent + '60', color: selected.accent }, transition: 'all 0.2s' }} />
                   ))}
                 </Box>
               </DialogContent>
