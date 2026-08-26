@@ -7,10 +7,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -22,6 +18,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ImageIcon from '@mui/icons-material/Image';
 import CloseIcon from '@mui/icons-material/Close';
+import PageHeader from '../_components/PageHeader';
+import EmptyState from '../_components/EmptyState';
+import FormDialog from '../_components/FormDialog';
 
 type StackGroup = { group: string; items: string[] };
 
@@ -246,18 +245,15 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
 
   return (
     <Container maxWidth="lg" sx={{ px: { xs: 3, md: 6 }, py: { xs: 6, md: 8 } }}>
-      <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', mb: 6 }}>
-        <Box>
-          <Typography variant="caption" sx={{ color: '#38bdf8', fontFamily: 'monospace', letterSpacing: '0.1em' }}>
-            // admin
-          </Typography>
-          <Typography variant="h4" sx={{ fontWeight: 300 }}>Projects</Typography>
-        </Box>
-        <Button startIcon={<AddIcon />} variant="outlined" size="small" onClick={openCreate}
-          sx={{ borderColor: 'divider', color: 'text.primary', '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' } }}>
-          Add Project
-        </Button>
-      </Box>
+      <PageHeader
+        title="Projects"
+        action={
+          <Button startIcon={<AddIcon />} variant="outlined" size="small" onClick={openCreate}
+            sx={{ borderColor: 'divider', color: 'text.primary', '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' } }}>
+            Add Project
+          </Button>
+        }
+      />
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
         {projects.map((p) => (
@@ -290,23 +286,11 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
             </Box>
           </Box>
         ))}
-        {projects.length === 0 && (
-          <Typography variant="body2" sx={{ color: 'text.disabled', py: 8, textAlign: 'center' }}>
-            ยังไม่มี project — กด Add Project เพื่อเริ่ม
-          </Typography>
-        )}
+        {projects.length === 0 && <EmptyState message="ยังไม่มี project — กด Add Project เพื่อเริ่ม" />}
       </Box>
 
-      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="md" fullWidth
-        slotProps={{ paper: { sx: { backgroundColor: 'background.paper', border: '1px solid', borderColor: 'divider' } } }}>
-        <DialogTitle sx={{ fontWeight: 300, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          {editing ? 'Edit Project' : 'Add Project'}
-          <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>
-            <CloseIcon fontSize="small" />
-          </IconButton>
-        </DialogTitle>
-
-        <DialogContent sx={{ display: 'flex', flexDirection: 'column', gap: 3, pt: 2 }}>
+      <FormDialog open={open} onClose={() => setOpen(false)} title={editing ? 'Edit Project' : 'Add Project'}
+        onSave={handleSave} saving={saving} saveDisabled={!form.title} maxWidth="md">
 
           {/* ── Image upload ── */}
           <Box>
@@ -489,16 +473,7 @@ export default function ProjectsClient({ projects: initial }: { projects: Projec
           <FormControlLabel label="เผยแพร่ (Published)" control={
             <Switch checked={form.published} onChange={(e) => f('published', e.target.checked)} size="small" />
           } />
-        </DialogContent>
-
-        <DialogActions sx={{ px: 3, pb: 3, gap: 1 }}>
-          <Button onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>ยกเลิก</Button>
-          <Button onClick={handleSave} variant="contained" disabled={saving || !form.title}
-            sx={{ backgroundColor: '#38bdf8', color: '#fff', '&:hover': { backgroundColor: '#0ea5e9' }, minWidth: 100 }}>
-            {saving ? <CircularProgress size={18} /> : 'บันทึก'}
-          </Button>
-        </DialogActions>
-      </Dialog>
+      </FormDialog>
     </Container>
   );
 }

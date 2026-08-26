@@ -13,6 +13,9 @@ import DeleteOutlineIcon from '@mui/icons-material/Delete';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import AddIcon from '@mui/icons-material/Add';
 import { createUserAction, deleteUserAction, changePasswordAction } from './actions';
+import PageHeader from '../_components/PageHeader';
+import FormDialog from '../_components/FormDialog';
+import { fieldSx } from '../_components/fieldSx';
 
 type User = {
   id: string;
@@ -21,22 +24,6 @@ type User = {
   role: string;
   createdAt: Date;
 };
-
-const fieldSx = (accent = '#38bdf8') => ({
-  '& .MuiOutlinedInput-root': {
-    borderRadius: 0,
-    fontFamily: 'var(--font-geist-mono), monospace',
-    fontSize: '0.8rem',
-    '& fieldset': { borderColor: 'divider' },
-    '&:hover fieldset': { borderColor: accent },
-    '&.Mui-focused fieldset': { borderColor: accent, borderWidth: '1px' },
-  },
-  '& .MuiInputLabel-root': {
-    fontFamily: 'var(--font-geist-mono), monospace',
-    fontSize: '0.75rem',
-    '&.Mui-focused': { color: accent },
-  },
-});
 
 function InlineMsg({ msg, ok }: { msg: string; ok: boolean }) {
   return (
@@ -58,20 +45,20 @@ function CreateUserForm({ onCreated }: { onCreated: (u: User) => void }) {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState<{ text: string; ok: boolean } | null>(null);
   const [isPending, startTransition] = useTransition();
-  const formRef = useRef<HTMLFormElement>(null);
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+  const handleSubmit = () => {
+    const fd = new FormData();
+    fd.set('name', form.name);
+    fd.set('email', form.email);
+    fd.set('password', form.password);
     startTransition(async () => {
       const res = await createUserAction(fd);
       if (res.error) {
         setMsg({ text: res.error, ok: false });
       } else {
-        setMsg({ text: 'สร้าง user เรียบร้อย', ok: true });
-        formRef.current?.reset();
-        // optimistic: reload
-        setTimeout(() => { setOpen(false); setMsg(null); window.location.reload(); }, 800);
+        setForm({ name: '', email: '', password: '' });
+        setTimeout(() => { setOpen(false); setMsg(null); window.location.reload(); }, 400);
       }
     });
   };
@@ -79,48 +66,28 @@ function CreateUserForm({ onCreated }: { onCreated: (u: User) => void }) {
   return (
     <Box>
       <Button
-        variant={open ? 'outlined' : 'contained'}
+        variant="outlined"
         size="small"
         startIcon={<AddIcon sx={{ fontSize: 14 }} />}
-        onClick={() => { setOpen((v) => !v); setMsg(null); }}
-        sx={{ fontSize: '0.65rem', py: 0.75, px: 2 }}
+        onClick={() => { setOpen(true); setMsg(null); }}
+        sx={{ borderColor: 'divider', color: 'text.primary', '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' } }}
       >
-        {open ? 'cancel' : 'new_user()'}
+        Add User
       </Button>
 
-      <Collapse in={open}>
-        <Box
-          component="form"
-          ref={formRef}
-          onSubmit={handleSubmit}
-          sx={{
-            mt: 3,
-            p: 3,
-            border: '1px solid',
-            borderColor: 'divider',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-            maxWidth: 480,
-          }}
-        >
-          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#38bdf8', mb: 1 }}>
-            // create user
-          </Typography>
-
-          <TextField name="name" label="Name (optional)" fullWidth size="small" sx={fieldSx()} />
-          <TextField name="email" label="Email *" type="email" required fullWidth size="small" sx={fieldSx()} />
-          <TextField name="password" label="Password * (min 8)" type="password" required fullWidth size="small" sx={fieldSx()} />
-
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            <Button type="submit" variant="contained" disabled={isPending} size="small" sx={{ fontSize: '0.65rem', py: 0.75 }}>
-              {isPending ? 'creating...' : 'create()'}
-            </Button>
-          </Box>
-
-          {msg && <InlineMsg msg={msg.text} ok={msg.ok} />}
-        </Box>
-      </Collapse>
+      <FormDialog
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Add User"
+        onSave={handleSubmit}
+        saving={isPending}
+        saveDisabled={!form.email || form.password.length < 8}
+      >
+        <TextField label="Name (optional)" value={form.name} onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))} fullWidth size="small" sx={fieldSx} />
+        <TextField label="Email *" type="email" value={form.email} onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))} fullWidth size="small" sx={fieldSx} />
+        <TextField label="Password * (min 8)" type="password" value={form.password} onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))} fullWidth size="small" sx={fieldSx} />
+        {msg && <InlineMsg msg={msg.text} ok={msg.ok} />}
+      </FormDialog>
     </Box>
   );
 }
@@ -179,7 +146,7 @@ function ChangePasswordRow({ userId }: { userId: string }) {
             type="password"
             size="small"
             required
-            sx={{ ...fieldSx(), width: 220 }}
+            sx={{ ...fieldSx, width: 220 }}
           />
           <Button type="submit" variant="outlined" disabled={isPending} size="small" sx={{ fontSize: '0.6rem', py: 0.5, mt: 0.5 }}>
             {isPending ? '...' : 'save'}
@@ -213,20 +180,15 @@ export default function UsersClient({ users: initial, currentUserId }: { users: 
 
   return (
     <Container maxWidth="lg" sx={{ px: { xs: 3, md: 6 }, py: { xs: 6, md: 8 } }}>
-      {/* Header */}
-      <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', mb: 6, flexWrap: 'wrap', gap: 3 }}>
-        <Box>
-          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#38bdf8', mb: 1, letterSpacing: '0.05em' }}>
-            // user management
+      <PageHeader
+        title="Users"
+        caption="user management"
+        action={
+          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: 'text.secondary' }}>
+            total: {users.length}
           </Typography>
-          <Typography variant="h2" sx={{ fontSize: { xs: '1.75rem', md: '2.25rem' } }}>
-            Users
-          </Typography>
-        </Box>
-        <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: 'text.secondary' }}>
-          total: {users.length}
-        </Typography>
-      </Box>
+        }
+      />
 
       {/* Create form */}
       <Box sx={{ mb: 6 }}>

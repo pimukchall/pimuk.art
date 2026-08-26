@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/auth';
+import { withAudit } from '@/lib/with-audit';
 import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
@@ -16,20 +17,22 @@ export async function POST(req: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const body = await req.json();
-  const game = await prisma.game.create({
-    data: {
-      title: body.title,
-      coverUrl: body.coverUrl ?? null,
-      platform: body.platform ?? '',
-      genre: body.genre ?? '',
-      status: body.status ?? 'backlog',
-      rating: body.rating != null ? Number(body.rating) : null,
-      hoursPlayed: body.hoursPlayed != null ? Number(body.hoursPlayed) : null,
-      completedYear: body.completedYear != null ? Number(body.completedYear) : null,
-      notes: body.notes ?? null,
-      order: Number(body.order) || 0,
-    },
+  return withAudit(session, async () => {
+    const body = await req.json();
+    const game = await prisma.game.create({
+      data: {
+        title: body.title,
+        coverUrl: body.coverUrl ?? null,
+        platform: body.platform ?? '',
+        genre: body.genre ?? '',
+        status: body.status ?? 'backlog',
+        rating: body.rating != null ? Number(body.rating) : null,
+        hoursPlayed: body.hoursPlayed != null ? Number(body.hoursPlayed) : null,
+        completedYear: body.completedYear != null ? Number(body.completedYear) : null,
+        notes: body.notes ?? null,
+        order: Number(body.order) || 0,
+      },
+    });
+    return NextResponse.json(game, { status: 201 });
   });
-  return NextResponse.json(game, { status: 201 });
 }

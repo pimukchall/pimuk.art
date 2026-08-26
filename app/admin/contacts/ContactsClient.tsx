@@ -10,6 +10,9 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import { markReadAction } from './actions';
+import PageHeader from '../_components/PageHeader';
+import EmptyState from '../_components/EmptyState';
+import AdminCard from '../_components/AdminCard';
 
 export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
   const [list, setList] = useState(contacts);
@@ -26,66 +29,40 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
 
   return (
     <Container maxWidth="lg" sx={{ px: { xs: 3, md: 6 }, py: { xs: 6, md: 8 } }}>
-      {/* Header */}
-      <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', mb: 6, flexWrap: 'wrap', gap: 2 }}>
-        <Box>
-          <Typography
-            sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.65rem', color: '#38bdf8', mb: 1, letterSpacing: '0.05em' }}
-          >
-            // contact submissions
-          </Typography>
-          <Typography variant="h2" sx={{ fontSize: { xs: '1.75rem', md: '2.25rem' } }}>
-            Contacts
-          </Typography>
-        </Box>
-        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: 'text.secondary' }}>
-            total: {list.length}
-          </Typography>
-          {unread > 0 && (
-            <Box
-              sx={{
-                px: 1.5,
-                py: 0.5,
-                backgroundColor: '#38bdf820',
-                border: '1px solid #38bdf8',
-                fontFamily: 'var(--font-geist-mono), monospace',
-                fontSize: '0.65rem',
-                color: '#38bdf8',
-              }}
-            >
-              {unread} unread
-            </Box>
-          )}
-        </Box>
-      </Box>
+      <PageHeader
+        title="Contacts"
+        caption="contact submissions"
+        action={
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+            <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.7rem', color: 'text.secondary' }}>
+              total: {list.length}
+            </Typography>
+            {unread > 0 && (
+              <Box
+                sx={{
+                  px: 1.5,
+                  py: 0.5,
+                  backgroundColor: '#38bdf820',
+                  border: '1px solid #38bdf8',
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                  fontSize: '0.65rem',
+                  color: '#38bdf8',
+                }}
+              >
+                {unread} unread
+              </Box>
+            )}
+          </Box>
+        }
+      />
 
       {/* List */}
       {list.length === 0 ? (
-        <Box sx={{ py: 16, textAlign: 'center' }}>
-          <Typography sx={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '0.75rem', color: 'text.secondary' }}>
-            // no contacts yet
-          </Typography>
-        </Box>
+        <EmptyState message="ยังไม่มีข้อความติดต่อ" />
       ) : (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-          {list.map((contact, i) => (
-            <Box
-              key={contact.id}
-              sx={{
-                borderTop: i === 0 ? '1px solid' : 'none',
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-                py: 3,
-                px: 2,
-                display: 'flex',
-                gap: 3,
-                alignItems: 'flex-start',
-                backgroundColor: contact.read ? 'transparent' : 'background.paper',
-                transition: 'background-color 0.2s',
-                '&:hover': { backgroundColor: 'background.paper' },
-              }}
-            >
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+          {list.map((contact) => (
+            <AdminCard key={contact.id} sx={{ alignItems: 'flex-start', backgroundColor: contact.read ? 'transparent' : 'background.paper' }}>
               {/* Unread dot */}
               <Box sx={{ mt: '6px', flexShrink: 0, width: 6, height: 6 }}>
                 {!contact.read && (
@@ -140,7 +117,7 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
                   </IconButton>
                 </Tooltip>
               )}
-            </Box>
+            </AdminCard>
           ))}
         </Box>
       )}

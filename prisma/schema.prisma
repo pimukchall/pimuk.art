@@ -81,3 +81,309 @@ model Dlc {
 enum Role {
   ADMIN
 }
+
+enum AssetType {
+  CASH
+  BANK
+  INVESTMENT
+  PROPERTY
+  OTHER
+}
+
+enum LiabilityType {
+  CREDIT_CARD
+  LOAN
+  INSTALLMENT
+  OTHER
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum RecurringFrequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+model Asset {
+  id           String   @id @default(cuid())
+  name         String
+  type         AssetType
+  initialValue Float
+  currentValue Float
+  icon         String?
+  color        String?
+  note         String?  @db.Text
+  archived     Boolean  @default(false)
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  valuations         AssetValuation[]
+  transactionsFrom   Transaction[]   @relation("FromAsset")
+  transactionsTo     Transaction[]   @relation("ToAsset")
+  recurringRulesFrom RecurringRule[] @relation("RecurringFromAsset")
+  recurringRulesTo   RecurringRule[] @relation("RecurringToAsset")
+}
+
+model AssetValuation {
+  id         String   @id @default(cuid())
+  assetId    String
+  asset      Asset    @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  value      Float
+  recordedAt DateTime @default(now())
+}
+
+model Liability {
+  id             String        @id @default(cuid())
+  name           String
+  type           LiabilityType
+  originalAmount Float
+  currentBalance Float
+  interestRate   Float?
+  dueDay         Int?
+  note           String?       @db.Text
+  archived       Boolean       @default(false)
+  order          Int           @default(0)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Category {
+  id            String          @id @default(cuid())
+  name          String
+  type          TransactionType
+  icon          String?
+  color         String?
+  order         Int             @default(0)
+  transactions  Transaction[]
+  recurringRules RecurringRule[]
+}
+
+model Transaction {
+  id              String          @id @default(cuid())
+  type            TransactionType
+  amount          Float
+  categoryId      String?
+  category        Category?       @relation(fields: [categoryId], references: [id])
+  fromAssetId     String?
+  fromAsset       Asset?          @relation("FromAsset", fields: [fromAssetId], references: [id])
+  toAssetId       String?
+  toAsset         Asset?          @relation("ToAsset", fields: [toAssetId], references: [id])
+  note            String?
+  receiptUrl      String?
+  occurredAt      DateTime
+  recurringRuleId String?
+  recurringRule   RecurringRule?  @relation(fields: [recurringRuleId], references: [id])
+  createdAt       DateTime        @default(now())
+}
+
+model RecurringRule {
+  id          String             @id @default(cuid())
+  title       String
+  type        TransactionType
+  amount      Float
+  categoryId  String?
+  category    Category?          @relation(fields: [categoryId], references: [id])
+  fromAssetId String?
+  fromAsset   Asset?             @relation("RecurringFromAsset", fields: [fromAssetId], references: [id])
+  toAssetId   String?
+  toAsset     Asset?             @relation("RecurringToAsset", fields: [toAssetId], references: [id])
+  note        String?
+  frequency   RecurringFrequency
+  interval    Int                @default(1)
+  startDate   DateTime
+  endDate     DateTime?
+  nextRunAt   DateTime
+  active      Boolean            @default(true)
+  archived    Boolean            @default(false)
+
+  transactions Transaction[]
+  tasks        Task[]
+}
+
+enum ITAssetType {
+  LAPTOP
+  DESKTOP
+  MONITOR
+  PERIPHERAL
+  NETWORK_EQUIPMENT
+  SOFTWARE_LICENSE
+  OTHER
+}
+
+enum ITAssetStatus {
+  IN_USE
+  IN_STORAGE
+  REPAIR
+  RETIRED
+  LOST
+}
+
+model ITAsset {
+  id             String        @id @default(cuid())
+  name           String
+  type           ITAssetType
+  status         ITAssetStatus @default(IN_USE)
+  serialNumber   String?       @unique
+  assignedTo     String?
+  vendor         String?
+  purchaseDate   DateTime?
+  purchasePrice  Float?
+  warrantyExpiry DateTime?
+  attachmentUrl  String?
+  note           String?       @db.Text
+  archived       Boolean       @default(false)
+  order          Int           @default(0)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  logs         ITAssetLog[]
+  licenseSeats LicenseSeat[]
+}
+
+model ITAssetLog {
+  id         String        @id @default(cuid())
+  itAssetId  String
+  itAsset    ITAsset       @relation(fields: [itAssetId], references: [id], onDelete: Cascade)
+  fromStatus ITAssetStatus?
+  toStatus   ITAssetStatus
+  assignedTo String?
+  note       String?
+  createdAt  DateTime      @default(now())
+}
+
+enum BillingCycle {
+  ONE_TIME
+  MONTHLY
+  YEARLY
+}
+
+model License {
+  id           String       @id @default(cuid())
+  name         String
+  vendor       String?
+  licenseKey   String?
+  seatsTotal   Int          @default(1)
+  cost         Float?
+  billingCycle BillingCycle @default(YEARLY)
+  purchaseDate DateTime?
+  renewalDate  DateTime?
+  autoRenew    Boolean      @default(false)
+  note         String?      @db.Text
+  archived     Boolean      @default(false)
+  order        Int          @default(0)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  seats LicenseSeat[]
+}
+
+model LicenseSeat {
+  id         String   @id @default(cuid())
+  licenseId  String
+  license    License  @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+  assignedTo String
+  itAssetId  String?
+  itAsset    ITAsset? @relation(fields: [itAssetId], references: [id], onDelete: SetNull)
+  note       String?
+  createdAt  DateTime @default(now())
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+model AuditLog {
+  id         String      @id @default(cuid())
+  actorId    String?
+  actorEmail String?
+  action     AuditAction
+  model      String
+  recordId   String?
+  summary    String?     @db.Text
+  createdAt  DateTime    @default(now())
+
+  @@index([createdAt])
+  @@index([model])
+}
+
+enum TaskPriority {
+  URGENT_IMPORTANT
+  URGENT_NOT_IMPORTANT
+  NOT_URGENT_IMPORTANT
+  NOT_URGENT_NOT_IMPORTANT
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum MilestoneStatus {
+  PLANNED
+  IN_PROGRESS
+  DONE
+}
+
+model Milestone {
+  id          String          @id @default(cuid())
+  title       String
+  description String?         @db.Text
+  targetDate  DateTime?
+  status      MilestoneStatus @default(PLANNED)
+  order       Int             @default(0)
+  archived    Boolean         @default(false)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  tasks Task[]
+}
+
+model Task {
+  id              String         @id @default(cuid())
+  title           String
+  description     String?        @db.Text
+  priority        TaskPriority   @default(NOT_URGENT_NOT_IMPORTANT)
+  status          TaskStatus     @default(TODO)
+  dueDate         DateTime?
+  milestoneId     String?
+  milestone       Milestone?     @relation(fields: [milestoneId], references: [id], onDelete: SetNull)
+  recurringRuleId String?
+  recurringRule   RecurringRule? @relation(fields: [recurringRuleId], references: [id])
+  parentTaskId    String?
+  parentTask      Task?          @relation("Subtasks", fields: [parentTaskId], references: [id], onDelete: Cascade)
+  subtasks        Task[]         @relation("Subtasks")
+  order           Int            @default(0)
+  archived        Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model CalendarEvent {
+  id          String    @id @default(cuid())
+  title       String
+  description String?   @db.Text
+  startAt     DateTime
+  endAt       DateTime?
+  allDay      Boolean   @default(false)
+  location    String?
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}

@@ -7,10 +7,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -23,7 +19,9 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ImageIcon from '@mui/icons-material/Image';
-import CloseIcon from '@mui/icons-material/Close';
+import PageHeader from '../_components/PageHeader';
+import EmptyState from '../_components/EmptyState';
+import FormDialog from '../_components/FormDialog';
 
 const STATUS_COLOR: Record<string, string> = {
   playing: '#38bdf8',
@@ -227,18 +225,15 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
 
   return (
     <Container maxWidth="lg" sx={{ px: { xs: 3, md: 6 }, py: { xs: 6, md: 8 } }}>
-      <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', mb: 6 }}>
-        <Box>
-          <Typography variant="caption" sx={{ color: '#38bdf8', fontFamily: 'monospace', letterSpacing: '0.1em' }}>
-            // admin
-          </Typography>
-          <Typography variant="h4" sx={{ fontWeight: 300 }}>Games</Typography>
-        </Box>
-        <Button startIcon={<AddIcon />} variant="outlined" size="small" onClick={openCreate}
-          sx={{ borderColor: 'divider', color: 'text.primary', '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' } }}>
-          Add Game
-        </Button>
-      </Box>
+      <PageHeader
+        title="Games"
+        action={
+          <Button startIcon={<AddIcon />} variant="outlined" size="small" onClick={openCreate}
+            sx={{ borderColor: 'divider', color: 'text.primary', '&:hover': { borderColor: '#38bdf8', color: '#38bdf8' } }}>
+            Add Game
+          </Button>
+        }
+      />
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
         {games.map((g) => (
@@ -270,23 +265,11 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
             </Box>
           </Box>
         ))}
-        {games.length === 0 && (
-          <Typography variant="body2" color="text.disabled" sx={{ py: 8, textAlign: 'center' }}>
-            ยังไม่มีเกม — กด Add Game เพื่อเริ่ม
-          </Typography>
-        )}
+        {games.length === 0 && <EmptyState message="ยังไม่มีเกม — กด Add Game เพื่อเริ่ม" />}
       </Box>
 
-      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth
-        slotProps={{ paper: { sx: { backgroundColor: 'background.paper', border: '1px solid', borderColor: 'divider' } } }}>
-        <DialogTitle sx={{ fontWeight: 300, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          {editing ? 'Edit Game' : 'Add Game'}
-          <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>
-            <CloseIcon fontSize="small" />
-          </IconButton>
-        </DialogTitle>
-
-        <DialogContent sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, pt: 2 }}>
+      <FormDialog open={open} onClose={() => setOpen(false)} title={editing ? 'Edit Game' : 'Add Game'}
+        onSave={handleSave} saving={saving} saveDisabled={!form.title}>
           {/* Cover upload */}
           <Box>
             <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handleUpload} />
@@ -415,16 +398,7 @@ export default function GamesAdminClient({ games: initial }: { games: Game[] }) 
               </>
             )}
           </Box>
-        </DialogContent>
-
-        <DialogActions sx={{ px: 3, pb: 3, gap: 1 }}>
-          <Button onClick={() => setOpen(false)} sx={{ color: 'text.secondary' }}>ยกเลิก</Button>
-          <Button onClick={handleSave} variant="contained" disabled={saving || !form.title}
-            sx={{ backgroundColor: '#38bdf8', color: '#fff', '&:hover': { backgroundColor: '#0ea5e9' }, minWidth: 100 }}>
-            {saving ? <CircularProgress size={18} /> : 'บันทึก'}
-          </Button>
-        </DialogActions>
-      </Dialog>
+      </FormDialog>
     </Container>
   );
 }
